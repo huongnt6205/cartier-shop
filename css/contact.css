@@ -1,0 +1,81 @@
+/* Giới hạn phạm vi để không ảnh hưởng tới header */
+.contact-page-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 50px 20px;
+  background: #fff;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.contact-container {
+  width: 100%;
+  max-width: 500px;
+}
+
+.contact-container h1 {
+  font-size: 36px;
+  font-weight: 800;
+  color: #222;
+  margin-bottom: 0;
+}
+
+.contact-container h1 span {
+  color: #000;
+}
+
+.contact-container h3 {
+  color: #444;
+  margin-bottom: 30px;
+  font-weight: 500;
+}
+
+.contact-container label {
+  display: block;
+  font-size: 14px;
+  margin: 15px 0 5px;
+  color: #222;
+  font-weight: 600;
+}
+
+.contact-container input[type="text"],
+.contact-container input[type="email"],
+.contact-container textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background: #f6f8fa;
+}
+
+.contact-container textarea {
+  resize: vertical;
+}
+
+.contact-container .captcha-box {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.contact-container .captcha-box img {
+  height: 35px;
+  border: 1px solid #ccc;
+}
+
+.contact-container .btn-gui {
+  margin-top: 20px;
+  padding: 10px 25px;
+  border: 2px solid #c0392b;
+  background: #fff;
+  color: #c0392b;
+  font-weight: bold;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.contact-container .btn-gui:hover {
+  background: #c0392b;
+  color: white;
+}
