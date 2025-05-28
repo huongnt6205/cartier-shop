@@ -41,7 +41,7 @@ require_once __DIR__ . '/../service/product_image_service.php';
                   <img src="<?=$imageUrl['image_url'] ?? ""?>">
                   <div class="item-info">
                      <h4><?=$item['name']?></h4>
-                     <p>Giá: $<?=number_format($item['price'], 2)?></p>
+                     <p>Giá: <?=number_format($item['price'], 2)?> VND </p>
                      <form method="post" action="update_cart.php" class="quantity-control">
                         <input type="hidden" name="product_id" value="<?=$id?>">
                         <button type="submit" name="action" value="decrease">-</button>
@@ -62,13 +62,13 @@ require_once __DIR__ . '/../service/product_image_service.php';
       <div class="cart-right">
          <h3>Tổng thanh toán</h3>
          <div class="summary-line">
-            <span>Tạm tính:</span><span>$<?php echo number_format($total ?? 0, 2); ?></span>
+            <span>Tạm tính:</span><span><?php echo number_format($total ?? 0, 2); ?> VND </span>
          </div>
          <div class="summary-line">
             <span>Phí vận chuyển:</span><span>Miễn phí</span>
          </div>
          <div class="summary-line total">
-            <span>Tổng cộng:</span><span>$<?php echo number_format($total ?? 0, 2); ?></span>
+            <span>Tổng cộng:</span><span> <?php echo number_format($total ?? 0, 2); ?> VND </span>
          </div>
 
          <div class="discount-code">

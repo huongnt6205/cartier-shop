@@ -47,7 +47,7 @@ if (isset($_GET['product_id'])) {
 
         <div class="single-pro-details">
             <h3> <?= $product['name'] ?> </h3>
-            <h2> $<?= $product['price'] ?></h2>
+            <h2> <?= $product['price'] ?> VND</h2>
             <div class="action-buttons">
                 <label for="quantity" class="quantity-label">Số lượng:</label>
                 <div class="quantity-selector">

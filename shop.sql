@@ -38,6 +38,24 @@ CREATE TABLE
         CONSTRAINT FK_pd_pdimage FOREIGN KEY (product_id) REFERENCES product(id)
     );
 
+CREATE TABLE
+    `order` (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        customer_name VARCHAR(255) NOT NULL,
+        phone VARCHAR(15) NOT NULL,
+        address TEXT NOT NULL,
+        note TEXT NOT NULL,
+        date datetime NOT NULL
+    );
+
+CREATE TABLE
+    order_detail (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        order_id INT NOT NULL,
+        product_id INT NOT NULL,
+        quantity INT NOT NULL
+    )
+
 INSERT INTO
     users (name, email, password, user_type)
 VALUES

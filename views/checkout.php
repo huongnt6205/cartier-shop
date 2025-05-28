@@ -1,17 +1,16 @@
 <?php
 session_start();
+require_once __DIR__ . "/../service/product_service.php";
+require_once __DIR__ . "/../service/product_image_service.php";
 
 // Tính tổng tiền giỏ hàng
 $total = 0;
 if (!empty($_SESSION['cart'])) {
-    foreach ($_SESSION['cart'] as $item) {
-        $total += $item['price'] * $item['quantity'];
+    foreach ($_SESSION['cart'] as $itemId => $quantity) {
+        $item = getProductById($itemId);
+        $total += $item['price'] * $quantity;
     }
 }
-$shipping_fee = 0; // Miễn phí vận chuyển
-$discount = 0;     // Mã giảm giá giả định
-
-$final_total = $total + $shipping_fee - $discount;
 ?>
 
 <!DOCTYPE html>
@@ -52,26 +51,27 @@ $final_total = $total + $shipping_fee - $discount;
 
             <div class="order-summary">
                 <h3>Đơn hàng của bạn</h3>
-                <?php if (empty($_SESSION['cart'])): ?>
+                <?php if (!isset($_SESSION['cart'])): ?>
                     <p>Giỏ hàng của bạn đang trống.</p>
                 <?php else: ?>
                     <ul class="product-list">
-                        <?php foreach ($_SESSION['cart'] as $item): ?>
+                        <?php foreach ($_SESSION['cart'] as $itemId => $quantity) { 
+                            $item = getProductById($itemId);
+                            $itemImage = getProductPrimaryImageByProductId($itemId);
+                        ?>
                             <li>
-                                <img src="<?php echo htmlspecialchars($item['image']); ?>" alt="<?php echo htmlspecialchars($item['name']); ?>" />
+                                <img src="<?=$itemImage['image_url'] ?? ""?>"/>
                                 <div>
-                                    <p class="product-name"><?php echo htmlspecialchars($item['name']); ?></p>
-                                    <p>Số lượng: <?php echo $item['quantity']; ?></p>
-                                    <p>Giá: $<?php echo number_format($item['price'], 2); ?></p>
+                                    <p class="product-name"><?=$item['name']?></p>
+                                    <p>Số lượng: <?=$quantity?></p>
+                                    <p>Giá: <?=$item['price']?> VND</p>
                                 </div>
                             </li>
-                        <?php endforeach; ?>
+                        <?php } ?>
                     </ul>
                     <div class="summary-details">
                         <p><span>Tạm tính:</span> $<?php echo number_format($total, 2); ?></p>
-                        <p><span>Phí vận chuyển:</span> <?php echo $shipping_fee === 0 ? 'Miễn phí' : '$' . number_format($shipping_fee, 2); ?></p>
-                        <p><span>Giảm giá:</span> -$<?php echo number_format($discount, 2); ?></p>
-                        <p class="final-total"><span>Tổng cộng:</span> $<?php echo number_format($final_total, 2); ?></p>
+                        <p class="final-total"><span>Tổng cộng:</span> $<?php echo number_format($total, 2); ?></p>
                     </div>
                 <?php endif; ?>
             </div>
