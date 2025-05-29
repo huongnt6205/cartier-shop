@@ -51,9 +51,7 @@ if (isset($_GET['product_id'])) {
             <div class="action-buttons">
                 <label for="quantity" class="quantity-label">Số lượng:</label>
                 <div class="quantity-selector">
-                    <button type="button" class="qty-btn minus">-</button>
                     <input type="number" value="1" min="1" id="quantity">
-                    <button type="button" class="qty-btn plus">+</button>
                 </div>
                 <button class="add-cart">🛒 Thêm vào giỏ</button>
                 <button class="buy-now">🛍 Mua ngay</button>

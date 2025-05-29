@@ -1,5 +1,5 @@
 <?php
-@include 'config.php';
+@include 'config/dbconfig.php';
 session_start();
 
 $message = [];

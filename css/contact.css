@@ -9,73 +9,79 @@
 
 .contact-container {
   width: 100%;
-  max-width: 500px;
+  max-width: 550px;
+  background: #fefefe;
+  padding: 30px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 .contact-container h1 {
-  font-size: 36px;
-  font-weight: 800;
-  color: #222;
+  font-size: 32px;
+  font-weight: 700;
+  color: #c0392b;
   margin-bottom: 0;
+  text-align: center;
 }
 
 .contact-container h1 span {
-  color: #000;
+  color: #222;
 }
 
 .contact-container h3 {
-  color: #444;
+  color: #666;
+  font-size: 16px;
+  text-align: center;
   margin-bottom: 30px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .contact-container label {
   display: block;
   font-size: 14px;
-  margin: 15px 0 5px;
+  margin: 12px 0 5px;
   color: #222;
   font-weight: 600;
 }
 
 .contact-container input[type="text"],
 .contact-container input[type="email"],
+.contact-container input[type="number"],
 .contact-container textarea {
   width: 100%;
-  padding: 10px;
+  padding: 10px 14px;
   font-size: 15px;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 4px;
   background: #f6f8fa;
+  transition: border-color 0.3s;
+}
+
+.contact-container input:focus,
+.contact-container textarea:focus {
+  border-color: #c0392b;
+  outline: none;
 }
 
 .contact-container textarea {
   resize: vertical;
-}
-
-.contact-container .captcha-box {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  margin-top: 5px;
-}
-
-.contact-container .captcha-box img {
-  height: 35px;
-  border: 1px solid #ccc;
+  min-height: 100px;
 }
 
 .contact-container .btn-gui {
   margin-top: 20px;
-  padding: 10px 25px;
-  border: 2px solid #c0392b;
-  background: #fff;
-  color: #c0392b;
+  padding: 12px 20px;
+  border: none;
+  background: #c0392b;
+  color: #fff;
   font-weight: bold;
-  border-radius: 3px;
+  font-size: 15px;
+  border-radius: 4px;
   cursor: pointer;
+  width: 100%;
+  transition: background 0.3s;
 }
 
 .contact-container .btn-gui:hover {
-  background: #c0392b;
-  color: white;
+  background: #a83224;
 }

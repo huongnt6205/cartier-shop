@@ -26,7 +26,7 @@ CREATE TABLE
         category_id INT,
         description TEXT NOT NULL,
         price DECIMAL(10, 2) NOT NULL,
-        CONSTRAINT FK_category_product FOREIGN KEY (category_id) REFERENCES category(id)
+        CONSTRAINT FK_category_product FOREIGN KEY (category_id) REFERENCES category (id)
     );
 
 CREATE TABLE
@@ -35,7 +35,7 @@ CREATE TABLE
         product_id INT NOT NULL,
         is_primary BIT NOT NULL,
         image_url TEXT,
-        CONSTRAINT FK_pd_pdimage FOREIGN KEY (product_id) REFERENCES product(id)
+        CONSTRAINT FK_pd_pdimage FOREIGN KEY (product_id) REFERENCES product (id)
     );
 
 CREATE TABLE
@@ -56,6 +56,14 @@ CREATE TABLE
         product_id INT NOT NULL,
         quantity INT NOT NULL
     )
+CREATE TABLE
+    message (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(100) NOT NULL,
+        order_id INT NOT NULL,
+        phone VARCHAR(15) NOT NULL,
+        `message` VARCHAR(500) NOT NULL
+    );
 
 INSERT INTO
     users (name, email, password, user_type)

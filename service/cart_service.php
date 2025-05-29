@@ -1,14 +1,20 @@
 <?php
 
+session_start();
+
 const CART_SESSION = 'cart';
 
+/**
+ * Lấy toàn bộ giỏ hàng
+ */
 function getAllCart()
 {
-    if (isset($_SESSION[CART_SESSION])) {
-        return $_SESSION[CART_SESSION];
-    }
+    return $_SESSION[CART_SESSION] ?? [];
 }
 
+/**
+ * Thêm sản phẩm vào giỏ hàng
+ */
 function addToCart($productId, $quantity)
 {
     $cart = $_SESSION[CART_SESSION] ?? [];
@@ -22,47 +28,49 @@ function addToCart($productId, $quantity)
     $_SESSION[CART_SESSION] = $cart;
 }
 
+/**
+ * Cập nhật số lượng sản phẩm
+ */
+function updateCartQuantity($productId, $quantity)
+{
+    if ($quantity > 0) {
+        $_SESSION[CART_SESSION][$productId] = $quantity;
+    } else {
+        removeFromCart($productId);
+    }
+}
+
+/**
+ * Xóa sản phẩm khỏi giỏ hàng
+ */
 function removeFromCart($productId)
 {
-    if (!isset($_SESSION[CART_SESSION])) {
-        return;
-    }
-
     if (isset($_SESSION[CART_SESSION][$productId])) {
         unset($_SESSION[CART_SESSION][$productId]);
     }
 }
 
-function decreaseQuantity($productId, $quantity)
+/**
+ * Tăng số lượng sản phẩm
+ */
+function increaseQuantity($productId, $quantity = 1)
 {
-    if (!isset($_SESSION[CART_SESSION])) {
-        return;
+    if (isset($_SESSION[CART_SESSION][$productId])) {
+        $_SESSION[CART_SESSION][$productId] += $quantity;
     }
+}
 
-    $cart = $_SESSION[CART_SESSION];
+/**
+ * Giảm số lượng sản phẩm
+ */
+function decreaseQuantity($productId, $quantity = 1)
+{
+    if (isset($_SESSION[CART_SESSION][$productId])) {
+        $_SESSION[CART_SESSION][$productId] -= $quantity;
 
-    if (isset($cart[$productId])) {
-        $cart[$productId]['quantity'] -= $quantity;
-
-        if ($cart[$productId]['quantity'] <= 0) {
-            unset($cart[$productId]);
+        if ($_SESSION[CART_SESSION][$productId] <= 0) {
+            unset($_SESSION[CART_SESSION][$productId]);
         }
-
-        $_SESSION[CART_SESSION] = $cart;
     }
 }
 
-function increaseQuantity($productId, $quantity)
-{
-    if (!isset($_SESSION[CART_SESSION])) {
-        return;
-    }
-
-    $cart = $_SESSION[CART_SESSION];
-
-    if (isset($cart[$productId])) {
-        $cart[$productId]['quantity'] += $quantity;
-
-        $_SESSION[CART_SESSION] = $cart;
-    }
-}

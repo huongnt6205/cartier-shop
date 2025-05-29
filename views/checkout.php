@@ -37,7 +37,7 @@ if (!empty($_SESSION['cart'])) {
             <div class="customer-info">
                 <h3>Thông tin người nhận</h3>
                 <label for="name">Tên người nhận <span>*</span></label>
-                <input type="text" id="customer_name" name="customer_name" required placeholder="Nguyễn Văn A" />
+                <input type="text" id="customer_name" name="customer_name" required placeholder="Nguyen Van A" />
 
                 <label for="phone">Số điện thoại <span>*</span></label>
                 <input type="tel" id="phone" name="phone" required pattern="[0-9]{9,12}" placeholder="0901234567" />
@@ -70,10 +70,12 @@ if (!empty($_SESSION['cart'])) {
                         <?php } ?>
                     </ul>
                     <div class="summary-details">
-                        <p><span>Tạm tính:</span> $<?php echo number_format($total, 2); ?></p>
-                        <p class="final-total"><span>Tổng cộng:</span> $<?php echo number_format($total, 2); ?></p>
+                        <p><span>Tạm tính:</span> <?php echo number_format($total, 2); ?> VND </p>
+                        <p><span>Phí vận chuyển: </span> Miễn phí vận chuyển </p>
+                        <p class="final-total"><span>Tổng cộng:</span> $<?php echo number_format($total, 2); ?> VND </p>
                     </div>
                 <?php endif; ?>
+                <p></p>
             </div>
             <button type="submit" class="pay-btn">Thanh Toán</button>
         </form>

@@ -160,3 +160,22 @@ body {
     font-size: 1rem;
   }
 }
+
+<?php
+@include 'config.php';
+session_start();
+
+// Kiểm tra đăng nhập admin
+if (!isset($_SESSION['admin_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
+// Xóa tin nhắn nếu có yêu cầu
+if (isset($_GET['delete'])) {
+    $delete_id = intval($_GET['delete']);
+    mysqli_query($conn, "DELETE FROM message WHERE id = $delete_id") or die('Xóa thất bại!');
+    header('Location: admin_contacts.php');
+    exit;
+}
+?>

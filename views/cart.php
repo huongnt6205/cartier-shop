@@ -2,7 +2,28 @@
 session_start();
 require_once __DIR__ . '/../service/product_service.php';
 require_once __DIR__ . '/../service/product_image_service.php';
+require_once __DIR__ . '/../service/cart_service.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+   $productId = $_POST['product_id'] ?? null;
+
+   // Xử lý xóa
+   if (isset($_POST['action']) && $_POST['action'] === 'remove' && $productId) {
+      removeFromCart($productId);
+      header('Location: ' . $_SERVER['PHP_SELF']);
+      exit();
+   }
+
+   // Xử lý cập nhật số lượng
+   $quantity = $_POST['quantity'] ?? null;
+   if ($productId && is_numeric($quantity)) {
+      updateCartQuantity($productId, (int)$quantity);
+      header("Location: " . $_SERVER['HTTP_REFERER']);
+      exit();
+   }
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -38,20 +59,19 @@ require_once __DIR__ . '/../service/product_image_service.php';
                $total += $subtotal;
             ?>
                <div class="cart-item">
-                  <img src="<?=$imageUrl['image_url'] ?? ""?>">
+                  <img src="<?= $imageUrl['image_url'] ?? "" ?>">
                   <div class="item-info">
-                     <h4><?=$item['name']?></h4>
-                     <p>Giá: <?=number_format($item['price'], 2)?> VND </p>
-                     <form method="post" action="update_cart.php" class="quantity-control">
-                        <input type="hidden" name="product_id" value="<?=$id?>">
-                        <button type="submit" name="action" value="decrease">-</button>
-                        <input type="number" name="quantity" value="<?=$quantity?>" min="1">
-                        <button type="submit" name="action" value="increase">+</button>
+                     <h4><?= $item['name'] ?></h4>
+                     <p>Giá: <?= number_format($item['price'], 2) ?> VND </p>
+                     <form method="post" action="" class="quantity-control">
+                        <input type="hidden" name="product_id" value="<?= $id ?>">
+                        <input type="number" name="quantity" value="<?= $quantity ?>" min="1">
                      </form>
                   </div>
-                  <form method="post" action="remove_from_cart.php">
-                     <input type="hidden" name="product_id" value="<?=$id?>">
-                     <button class="remove-btn" type="submit"><i class="fa-solid fa-trash"></i></button>
+                  <form method="post" action="">
+                     <input type="hidden" name="product_id" value="<?= $id ?>">
+                     <input type="hidden" name="action" value="remove">
+                     <button type="submit" class="remove-btn"><i class="fa-solid fa-trash"></i></button>
                   </form>
                </div>
             <?php endforeach; ?>
@@ -79,10 +99,18 @@ require_once __DIR__ . '/../service/product_image_service.php';
             <a href="/cartier-shop/views/checkout.php">
                <button type="submit" class="buy-now-btn"> Mua ngay</button>
             </a>
+         </form>
       </div>
    </div>
 
    <?php include 'footer.php'; ?>
+   <script>
+      document.querySelectorAll('.quantity-control input[type="number"]').forEach(input => {
+         input.addEventListener('change', function() {
+            this.form.submit();
+         });
+      });
+   </script>
 </body>
 
 </html>
