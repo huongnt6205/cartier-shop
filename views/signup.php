@@ -1,5 +1,5 @@
 <?php
-@include '../config.php';  // Đảm bảo đường dẫn đúng
+@include 'config/dbconfig.php';  // Đảm bảo đường dẫn đúng
 session_start();
 
 $message = [];
