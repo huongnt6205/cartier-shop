@@ -60,6 +60,9 @@ if (isset($_GET['product_id'])) {
             </div>
 
             <h4>Product Details</h4>
+            <p>
+                trạng thái: còn hàng!
+            </p>
             <span>
                 <?= $product['description'] ?>
             </span>

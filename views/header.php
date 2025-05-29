@@ -55,7 +55,7 @@ $categories = getAllCategory();
       <span class="span-icon-cart">
         <a href="/cartier-shop/views/cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
         <span id="cart-item-number">
-          <?=count($_SESSION['cart'])?>
+          <?=isset($_SESSION['cart']) ? count($_SESSION['cart']) : ''?>
         </span>
       </span>
     </div>

@@ -40,11 +40,12 @@ CREATE TABLE
 
 CREATE TABLE
     `order` (
-        id INT AUTO_INCREMENT PRIMARY KEY,
+        id INT PRIMARY KEY,
         customer_name VARCHAR(255) NOT NULL,
         phone VARCHAR(15) NOT NULL,
         address TEXT NOT NULL,
         note TEXT NOT NULL,
+        status VARCHAR(255) NULL,
         date datetime NOT NULL
     );
 

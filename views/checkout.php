@@ -33,11 +33,11 @@ if (!empty($_SESSION['cart'])) {
     <section class="checkout-section">
         <h2>Thanh Toán</h2>
 
-        <form action="process_checkout.php" method="post" class="checkout-form">
+        <form action="/cartier-shop/api/crash_payment_api.php" method="post" class="checkout-form">
             <div class="customer-info">
                 <h3>Thông tin người nhận</h3>
                 <label for="name">Tên người nhận <span>*</span></label>
-                <input type="text" id="name" name="name" required placeholder="Nguyễn Văn A" />
+                <input type="text" id="customer_name" name="customer_name" required placeholder="Nguyễn Văn A" />
 
                 <label for="phone">Số điện thoại <span>*</span></label>
                 <input type="tel" id="phone" name="phone" required pattern="[0-9]{9,12}" placeholder="0901234567" />
