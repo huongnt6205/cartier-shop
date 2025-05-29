@@ -34,6 +34,7 @@ $categories = getAllCategory();
         <li><a href="/cartier-shop/views/sale.php">KHUYẾN MÃI</a></li>
         <li><a href="/cartier-shop/views/about.php">Thông Tin</a></li>
         <li><a href="/cartier-shop/views/contact.php">LIÊN HỆ</a></li>
+        <li><a href="/cartier-shop/views/orders.php">Đơn hàng</a></li>
       </ul>
     </div>
 
@@ -45,7 +46,7 @@ $categories = getAllCategory();
 
       <?php if (isset($_SESSION['user_id'])): ?>
         <span>Xin chào, <?php echo htmlspecialchars($_SESSION['user_name']); ?></span>
-        <a href="/cartier-shop/views/logout.php" style="margin-left: 15px; padding: 8px 12px; background-color: #f44336; color: white; border-radius: 3px; text-decoration: none;">ĐĂNG XUẤT</a>
+        <a href="/cartier-shop/views/logout.php" style="margin-left: 15px; padding: 8px 12px; background-color: #d63384; color: white; border-radius: 3px; text-decoration: none;">ĐĂNG XUẤT</a>
       <?php else: ?>
         <a href="/cartier-shop/views/login.php">
           <button>ĐĂNG NHẬP</button>

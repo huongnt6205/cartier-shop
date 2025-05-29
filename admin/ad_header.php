@@ -1,21 +1,3 @@
-<?php
-if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'admin') {
-    header('Location: ../login.php');
-    exit();
-}
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
-   <link rel="stylesheet" href="../admin/css/ad_header.css">
-</head>
-
-<body>
    <header>
       <nav class="header-nav">
          <div class="nav-left">
@@ -45,7 +27,3 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'admin') {
          </div>
       </nav>
    </header>
-
-</body>
-
-</html>

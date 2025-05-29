@@ -114,8 +114,6 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
         }, 3000);
     </script>
 
-
-
     <section class="product-highlight">
         <div class="highlight-image">
             <img src="/cartier-shop/images/A3.jpg" alt="Miss Cartier">

@@ -1,0 +1,86 @@
+/* ad_users.css */
+
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.user-management {
+    background-color: #fff;
+    margin: 30px auto;
+    padding: 120px 30px 30px 30px;
+    /* padding-top: 100px */
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    max-width: 1100px;
+}
+
+h1 {
+    text-align: center;
+    color: #d63384;
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+
+.btn-add {
+    display: inline-block;
+    margin-bottom: 20px;
+    background-color: #d63384;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-add:hover {
+    background-color: #ad1d65;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table thead {
+    background-color: #fce7f3;
+}
+
+table th,
+table td {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid #f0d9e7;
+}
+
+table th {
+    color: #d63384;
+    font-weight: 600;
+}
+
+table tr:hover {
+    background-color: #fff0f6;
+}
+
+.actions a {
+    margin-right: 10px;
+    color: #d63384;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.actions a:hover {
+    color: #ad1d65;
+}
+
+td[colspan="5"] {
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+    color: #999;
+}

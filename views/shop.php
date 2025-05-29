@@ -76,7 +76,9 @@ if (isset($_GET['category_id'])) {
             </div>
             <div class="form">
                 <input type="text" placeholder="Địa chỉ email của bạn" />
-                <button>Đăng ký</button>
+                <a href="signup.php">
+                    <button>Đăng ký</button>
+                </a>
             </div>
         </div>
     </section>

@@ -1,0 +1,147 @@
+/* Container bảng */
+body {
+    padding: 120px 10px;
+}
+.orders-section {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.orders-section h1 {
+    font-size: 28px;
+    color: #d63384;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+/* Bảng */
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+}
+
+.orders-table thead tr {
+    background-color: #f9c1db;
+    /* hồng nhạt */
+}
+
+.orders-table th,
+.orders-table td {
+    padding: 14px 15px;
+    border: 1px solid #f1c6d9;
+    text-align: left;
+    color: #0a2652;
+}
+
+.orders-table tbody tr:nth-child(even) {
+    background-color: #fff0f6;
+    /* hồng pastel nhẹ */
+}
+
+.orders-table tbody tr:hover {
+    background-color: #f7d2e1;
+}
+
+/* Trạng thái */
+.status {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: white;
+    display: inline-block;
+    min-width: 90px;
+    text-align: center;
+}
+
+.status.pending {
+    background-color: #d63384;
+    /* hồng tím đậm */
+}
+
+.status.ordered {
+    background-color: #c4518a;
+    /* hồng tím trung bình */
+}
+
+.status.received {
+    background-color: #a0416e;
+    /* tím hồng */
+}
+
+.status.cancelled {
+    background-color: #6e2b4e;
+    /* tím đậm */
+}
+
+.status.unknown {
+    background-color: #b89cbc;
+    /* tím nhạt */
+}
+
+/* Nút xem chi tiết */
+.btn-detail {
+    background-color: #d63384;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.btn-detail:hover {
+    background-color: #ad1d65;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+    .orders-table,
+    .orders-table thead,
+    .orders-table tbody,
+    .orders-table th,
+    .orders-table td,
+    .orders-table tr {
+        display: block;
+        width: 100%;
+    }
+
+    .orders-table thead tr {
+        display: none;
+    }
+
+    .orders-table tbody tr {
+        margin-bottom: 20px;
+        background-color: #fff;
+        box-shadow: 0 2px 8px rgba(214, 51, 132, 0.15);
+        border-radius: 12px;
+        padding: 20px;
+    }
+
+    .orders-table tbody td {
+        padding-left: 50%;
+        position: relative;
+        text-align: left;
+        border: none;
+        font-size: 14px;
+        color: #0a2652;
+    }
+
+    .orders-table tbody td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 20px;
+        top: 16px;
+        font-weight: 600;
+        color: #d63384;
+        white-space: nowrap;
+    }
+}

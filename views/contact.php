@@ -1,4 +1,23 @@
 <!-- contact.php -->
+
+<?php
+require_once __DIR__ . '/../service/contacts_service.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+   $name = $_POST['name'];
+   $order_id = $_POST['order_id'];
+   $phone = $_POST['phone'];
+   $message = $_POST['message'];
+
+   $success = saveContact([
+      'name' => $name,
+      'order_id' => $order_id,
+      'phone' => $phone,
+      'message' => $message
+   ]);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -16,27 +35,30 @@
 <body>
    <?php include 'header.php'; ?>
 
-   <div class="contact-page-wrapper">
-      <div class="contact-container">
-         <h1>LIÊN HỆ <span>VỚI CHÚNG TÔI</span></h1>
-         <h3>Vui lòng điền đầy đủ thông tin bên dưới</h3>
+   <div class="contact-container">
+      <h1>Liên hệ với chúng tôi</h1>
 
-         <form method="post" action="submit_contact.php">
-            <label for="name">Tên:</label>
-            <input type="text" id="name" name="name" required>
+      <?php if (isset($success) && $success): ?>
+         <p class="message-success">Tin nhắn đã được gửi thành công!</p>
+      <?php elseif (isset($success)): ?>
+         <p class="message-error">Gửi tin nhắn thất bại!</p>
+      <?php endif; ?>
 
-            <label for="phone">Số điện thoại:</label>
-            <input type="text" id="phone" name="phone" required>
+      <form method="post">
+         <label for="name">Tên:</label>
+         <input type="text" name="name" id="name" required>
 
-            <label for="order_id">Mã đơn hàng:</label>
-            <input type="number" id="order_id" name="order_id" required>
+         <label for="order_id">Mã đơn hàng:</label>
+         <input type="number" name="order_id" id="order_id" required>
 
-            <label for="message">Lời nhắn:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
+         <label for="phone">SĐT:</label>
+         <input type="text" name="phone" id="phone" required>
 
-            <button type="submit" class="btn-gui">GỬI</button>
-         </form>
-      </div>
+         <label for="message">Nội dung:</label>
+         <textarea name="message" id="message" rows="4" required></textarea>
+
+         <button type="submit">Gửi</button>
+      </form>
    </div>
 
    <?php include 'footer.php'; ?>
