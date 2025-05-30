@@ -47,7 +47,7 @@ if (isset($_GET['category_id'])) {
                             echo '<i class="fa-solid fa-star"></i>';
                         }
                         echo '</div>';
-                        echo '<h4>$' . $product["price"] . '</h4>';
+                        echo '<h4>' . $product["price"] . ' VND </h4>';
                         echo '</div>';
                         echo '<a href="#"><i class="fa-solid fa-cart-shopping"></i></a>';
                         echo '</div>';

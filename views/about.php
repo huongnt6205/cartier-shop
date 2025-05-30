@@ -145,7 +145,7 @@
                     <p>Đội ngũ tư vấn viên sẵn sàng hỗ trợ bạn 24/7 với mọi vấn đề về sản phẩm và đơn hàng.</p>
                 </div>
                 <div class="commit-item">
-                    <img src="../images/ship.png" alt="Giao hàng nhanh">
+                    <img src="../images/gh.png" alt="Giao hàng nhanh">
                     <h3>Giao hàng toàn quốc</h3>
                     <p>Giao hàng nhanh chóng từ 1–3 ngày, miễn phí vận chuyển cho đơn hàng từ 500.000đ.</p>
                 </div>

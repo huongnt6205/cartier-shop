@@ -1,0 +1,224 @@
+/* RESET */
+
+
+/* Hero Section */
+.hero {
+    background-image: url(../images/hero-bg.jpg);
+    height: 90vh;
+    width: 100%;
+    background-size: cover;
+    background-position: top 25% right 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.hero-bn {
+    padding: 0 80px;
+}
+
+.hero h4 {
+    padding-bottom: 20px;
+    font-size: 30px;
+    color: #444;
+}
+
+.hero h2 {
+    font-size: 40px;
+    color: #222;
+}
+
+.hero h1 {
+    color: #088178;
+    font-size: 50px;
+    padding: 10px 0;
+}
+
+.hero p {
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.hero button {
+    background-color: transparent;
+    color: #088178;
+    border: 2px solid #088178;
+    padding: 12px 24px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.hero button:hover {
+    background-color: #088178;
+    color: #fff;
+}
+
+/* Banner Section */
+.sm-banner {
+    padding: 3% 10%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.banner-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    min-width: 45%;
+    height: 35vh;
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.banner-box:first-child {
+    background-image: url(../images/banner1.jpg);
+}
+
+.banner-box2 {
+    background-image: url(../images/banner2.jpg);
+}
+
+.banner-box h4 {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.banner-box h2 {
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.banner-box span {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.banner-box button {
+    padding: 10px 20px;
+    border: 1px solid #fff;
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.banner-box:hover button {
+    background-color: #088178;
+    border-color: #088178;
+}
+
+/* Info Text */
+.info-text {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Product Grid */
+.menu {
+    text-align: center;
+    padding: 40px 10%;
+}
+
+.menu-pro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.menu-card {
+    background-color: #fff;
+    border: 1px solid #92d2f2;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    width: 20%;
+    min-width: 200px;
+    border-radius: 8px;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.menu-card:hover {
+    transform: scale(1.02);
+}
+
+.img-menu img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.menu-card h5 {
+    font-size: 18px;
+    color: #0b357a;
+    margin: 10px 0;
+}
+
+.menu-card h6 {
+    font-size: 16px;
+    color: #702a18;
+    margin-bottom: 10px;
+}
+
+.menu-card button {
+    background-color: #4287f5;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.menu-card button:hover {
+    background-color: #d2e7f2;
+    color: #0b357a;
+    border: 1px solid #0b357a;
+}
+
+/* Banner cuối */
+.banner3 {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 10%;
+}
+
+.banner3 .banner-box {
+    min-width: 30%;
+    height: 25vh;
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.banner-box3 {
+    background-image: url(../images/banner4.jpg);
+}
+
+.banner-box4 {
+    background-image: url(../images/banner5.jpg);
+}
+
+.banner3 h2 {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.banner3 h3 {
+    font-size: 14px;
+    color: #0b357a;
+}

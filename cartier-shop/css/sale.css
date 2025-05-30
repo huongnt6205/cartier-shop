@@ -1,0 +1,229 @@
+/* Tổng thể trang */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #333;
+}
+
+.sale-banner {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url(../images/banner7.jpg);
+    width: 100%;
+    height: 50vh;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Tên danh mục */
+.category-title {
+    font-size: 24px;
+    margin: 40px 0 20px 40px;
+    color: #111;
+    text-transform: uppercase;
+    border-left: 5px solid #ff3366;
+    padding-left: 15px;
+}
+
+/* Khối chứa sản phẩm */
+.pro-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 0 40px;
+}
+
+/* Mỗi sản phẩm */
+.pro {
+    background-color: #f8f8f8;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    width: 230px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.pro:hover {
+    transform: scale(1.03);
+}
+
+.pro img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.des {
+    padding: 15px;
+    text-align: left;
+}
+
+.des span {
+    font-size: 12px;
+    color: #ff3366;
+    font-weight: bold;
+}
+
+.des h5 {
+    font-size: 16px;
+    margin: 8px 0;
+}
+
+.star i {
+    color: gold;
+    font-size: 14px;
+}
+
+/* Giá và giá cũ */
+.des h4 {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+/* Icon giỏ hàng */
+.pro a {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    color: #fff;
+    background-color: #ff3366;
+    padding: 10px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.pro a:hover {
+    background-color: #e62e5c;
+}
+
+/* Phân trang */
+.pagination {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 10px 18px;
+    margin: 0 5px;
+    background-color: #eee;
+    border-radius: 8px;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.pagination a:hover {
+    background-color: #ff3366;
+    color: #fff;
+}
+
+/* Newsletter */
+.news-letter {
+    background-color: #f2f2f2;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.newstext h4 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.newstext p {
+    font-size: 16px;
+    color: #555;
+}
+
+.newstext span {
+    color: #ff3366;
+    font-weight: bold;
+}
+
+.form {
+    margin-top: 20px;
+}
+
+.form input {
+    padding: 10px;
+    width: 300px;
+    max-width: 90%;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.form button {
+    padding: 10px 20px;
+    background-color: #ff3366;
+    border: none;
+    color: #fff;
+    border-radius: 6px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.form button:hover {
+    background-color: #e62e5c;
+}
+
+@media (max-width: 768px) {
+    .pro-container {
+        padding: 0 10px;
+        gap: 15px;
+    }
+
+    .pro {
+        width: 45%;
+    }
+
+    .category-title {
+        margin: 20px 0 10px 20px;
+        font-size: 18px;
+    }
+
+    .form input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .form button {
+        width: 100%;
+    }
+
+    .sale-banner {
+        font-size: 2rem;
+        height: 40vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .pro {
+        width: 100%;
+    }
+
+    .pagination a {
+        padding: 8px 14px;
+    }
+}

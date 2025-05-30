@@ -53,8 +53,12 @@ if (isset($_GET['product_id'])) {
                 <div class="quantity-selector">
                     <input type="number" value="1" min="1" id="quantity">
                 </div>
-                <button class="add-cart">🛒 Thêm vào giỏ</button>
-                <button class="buy-now">🛍 Mua ngay</button>
+                <div class="btn-click">
+                    <button class="add-cart">🛒 Thêm vào giỏ</button>
+                    <a href="checkout.php">
+                        <button class="buy-now">🛍 Mua ngay</button>
+                    </a>
+                </div>
             </div>
 
             <h4>Product Details</h4>
@@ -130,6 +134,7 @@ if (isset($_GET['product_id'])) {
     </section>
 
     <script>
+        // Xử lý thêm vào giỏ
         const addToCart = document.getElementsByClassName('add-cart')[0];
         addToCart.addEventListener('click', async () => {
             const quantity = document.getElementById('quantity');
@@ -148,6 +153,16 @@ if (isset($_GET['product_id'])) {
             const cartItemNumber = document.getElementById('cart-item-number');
             cartItemNumber.innerHTML = Object.keys(data).length;
         });
+
+        // ✅ Xử lý thay đổi ảnh chính khi click ảnh nhỏ
+        const mainImg = document.getElementById('MainImg');
+        const smallImgs = document.getElementsByClassName('smallimg');
+
+        for (let i = 0; i < smallImgs.length; i++) {
+            smallImgs[i].addEventListener('click', function() {
+                mainImg.src = this.src;
+            });
+        }
     </script>
 
 

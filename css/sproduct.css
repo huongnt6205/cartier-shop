@@ -108,7 +108,7 @@ a {
 }
 
 .single-pro-details input[type="number"] {
-    width: 60px;
+    width: 80px;
     text-align: center;
 }
 
@@ -303,6 +303,7 @@ a {
 /* === QUANTITY ACTION BUTTONS === */
 .action-buttons {
     margin: 20px 0;
+    display: block;
 }
 
 .quantity-label {
@@ -317,7 +318,9 @@ a {
     align-items: center;
     margin-bottom: 10px;
 }
-
+.btn-click {
+    display: block;
+}
 .qty-btn {
     background: #ddd;
     border: none;

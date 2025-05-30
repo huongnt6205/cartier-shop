@@ -12,7 +12,7 @@ require_once __DIR__ . '/../service/users_service.php';
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Quản lý đơn hàng</title>
    <link rel="stylesheet" href="../admin/css/ad_app.css" />
-   <link rel="stylesheet" href="../admin/css/ad_footer.css">
+   <link rel="stylesheet" href="../admin/css/ad_page.css">
    <link rel="stylesheet" href="../admin/css/ad_footer.css" />
    <link rel="stylesheet" href="../admin/css/ad_header.css" />
    <title>Trang quản trị</title>

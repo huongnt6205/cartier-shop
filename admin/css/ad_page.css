@@ -1,75 +1,78 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-body {
-  background-color: #f9f9f9;
-  color: #333;
+.dashboard {
+  max-width: 1000px;
+  padding: 150px 30px 30px 30px ;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .title {
-  text-align: center;
-  font-size: 2rem;
-  margin: 30px 0;
+  font-size: 28px;
   color: #d63384;
-  text-transform: uppercase;
+  margin-bottom: 35px;
+  font-weight: 700;
 }
 
-.dashboard {
-  padding: 20px;
-  max-width: 1200px;
-  margin: auto;
-}
-
+/* Hiển thị các box theo chiều dọc */
 .box-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
+/* Giao diện từng box */
 .box {
-  background-color: #fff;
-  padding: 30px;
+  background-color: #fff0f6;
+  border: 2px solid #f9c1db;
   border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  text-align: center;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+  text-align: left;
 }
 
 .box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
 }
 
-.box h3 {
-  font-size: 2rem;
-  color: #d63384;
+.box h1 {
+  font-size: 18px;
+  color: #c4518a;
   margin-bottom: 10px;
 }
 
-.box p {
-  font-size: 1.1rem;
-  color: #777;
+.box h3 {
+  font-size: 22px;
+  color: #d63384;
+  margin: 8px 0;
 }
 
-/* Responsive padding for mobile */
-@media (max-width: 768px) {
-  .dashboard {
-    padding: 10px;
-  }
+.box h4,
+.box h6 {
+  font-size: 15px;
+  color: #6e2b4e;
+  margin: 6px 0;
+}
 
-  .title {
-    font-size: 1.5rem;
-  }
+.box span {
+  font-weight: bold;
+  color: #ad1d65;
+}
 
-  .box h3 {
-    font-size: 1.5rem;
-  }
+.box p a {
+  display: inline-block;
+  margin-top: 12px;
+  background-color: #d63384;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
 
-  .box p {
-    font-size: 1rem;
-  }
+.box p a:hover {
+  background-color: #ad1d65;
 }

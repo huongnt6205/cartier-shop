@@ -1,0 +1,172 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding-top: 80px; /* tạo khoảng trống bằng chiều cao header */
+}
+
+/* === HEADER NAV FIXED === */
+.header-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 40px;
+  background-color: #fff;
+  border-bottom: 2px solid #fce4ec;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);  
+  z-index: 999;
+}
+
+/* === NAV LEFT === */
+.nav-left ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-left li {
+  position: relative;
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-left a {
+  color: #555;
+  text-decoration: none;
+  padding: 8px 12px;
+  font-weight: 500;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.nav-left a:hover {
+  color: #d63384;
+}
+
+.nav-left a::after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 2px;
+  background-color: #d63384;
+  transition: width 0.3s ease;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.nav-left a:hover::after {
+  width: 100%;
+}
+
+/* === DROPDOWN === */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 80%;
+  left: 0;
+  background-color: #fff;
+  min-width: 180px;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  padding: 10px 0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.dropdown-content li {
+  padding: 0;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 20px;
+  color: #444;
+  transition: background 0.3s;
+}
+
+.dropdown-content a:hover {
+  background-color: #ffe6f0;
+  color: #d63384;
+}
+
+.dropdown i.fa-caret-down {
+  margin-left: 5px;
+  font-size: 12px;
+}
+
+/* === NAV RIGHT === */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.search-form {
+  display: flex;
+  align-items: center; 
+  border: 1px solid #eee;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+  height: 36px; 
+}
+
+.search-form input {
+  border: none;
+  outline: none;
+  padding: 6px 12px;
+  width: 150px;
+}
+
+.search-form button {
+  border: none;
+  background-color: #fff;
+  color: #888;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.search-form:hover {
+  box-shadow: 0 0 6px rgba(255, 105, 180, 0.3);
+}
+
+.nav-right button {
+  background-color: #d63384;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.nav-right button:hover {
+  background-color: #ad1d65;
+}
+
+.span-icon-cart a {
+  color: #d63384;
+  font-size: 18px;
+}

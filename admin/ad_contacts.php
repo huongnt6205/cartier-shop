@@ -11,7 +11,6 @@ $messages = getAllMessages();
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,6 +23,7 @@ $messages = getAllMessages();
 </head>
 
 <body>
+    <?php include 'ad_header.php'?>
     <section class="section-contacts">
         <h1>Danh sách tin nhắn từ người dùng</h1>
 
@@ -50,6 +50,9 @@ $messages = getAllMessages();
                             <td>
                                 <a href="?delete=<?= $row['id'] ?>" class="delete-btn" onclick="return confirm('Bạn có chắc muốn xóa tin nhắn này?')">
                                     <i class="fas fa-trash"></i> Xoá
+                                </a>
+                                <a href="reply_message.php?id=<?= $row['id'] ?>" class="reply-btn">
+                                    <i class="fas fa-reply"></i> Trả lời
                                 </a>
                             </td>
                         </tr>
