@@ -1,0 +1,100 @@
+/* === FORM CHUNG === */
+section {
+    max-width: 800px;
+    margin: 100px auto 50px;
+    padding: 80px 20px;
+    background-color: #fff;
+    border: 2px solid #fce4ec;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(214, 51, 132, 0.2);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    color: #d63384;
+    margin-bottom: 30px;
+    font-size: 35px;
+}
+
+/* === LABEL === */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+}
+
+/* === INPUT, SELECT, TEXTAREA === */
+input[type="text"],
+input[type="number"],
+select,
+textarea,
+input[type="file"] {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 20px;
+    border: 2px solid #fce4ec;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus,
+input[type="file"]:focus {
+    outline: none;
+    border-color: #d63384;
+    box-shadow: 0 0 5px rgba(214, 51, 132, 0.5);
+}
+
+/* === BUTTON === */
+button[type="submit"] {
+    background-color: #d63384;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 0 auto;
+    min-width: 150px;
+}
+
+button[type="submit"]:hover {
+    background-color: #ad1d65;
+}
+
+/* === ERROR MESSAGES === */
+.error {
+    background-color: #ffe6f0;
+    border: 1px solid #d63384;
+    color: #d63384;
+    padding: 15px 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+/* === SUCCESS MESSAGE === */
+.success {
+    background-color: #e6ffe9;
+    border: 1px solid #3c763d;
+    color: #3c763d;
+    padding: 15px 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    section {
+        margin: 120px 15px 30px;
+        padding: 15px;
+    }
+}

@@ -102,3 +102,13 @@ function getProductById($id)
     $result = findBy(PRODUCT_TABLE, ['id' => $id]);
     return $result[0] ?? null;
 }
+
+
+function getProductCount()
+{
+    $conn = connectDatabase();
+    if (!$conn) return 0;
+
+    $stmt = $conn->query("SELECT COUNT(*) FROM product");
+    return $stmt->fetchColumn();
+}

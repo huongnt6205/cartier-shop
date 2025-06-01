@@ -1,30 +1,49 @@
 <?php
 require_once __DIR__ . '/../service/users_service.php';
 
-// Lấy danh sách user (user_type = 'user')
+// Biến lưu thông báo
+$message = '';
+
+// Xử lý xóa người dùng nếu có delete_id trong URL
+if (isset($_GET['delete_id'])) {
+    $deleteId = $_GET['delete_id'];
+    if (deleteUserById($deleteId)) {
+        $message = "Đã xóa người dùng có ID $deleteId thành công.";
+    } else {
+        $message = "Xóa người dùng thất bại.";
+    }
+}
+
+// Lấy danh sách user (user_type = 'user') sau khi xóa
 $users = getUsersByType('user');
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý đơn hàng</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quản lý Người dùng</title>
     <link rel="stylesheet" href="../admin/css/ad_app.css" />
-    <link rel="stylesheet" href="../admin/css/ad_users.css">
+    <link rel="stylesheet" href="../admin/css/ad_users.css" />
     <link rel="stylesheet" href="../admin/css/ad_footer.css" />
     <link rel="stylesheet" href="../admin/css/ad_header.css" />
-    <title>Quản lý Người dùng</title>
 </head>
 
 <body>
+    <?php include 'ad_header.php'; ?>
 
-    <?php include 'ad_header.php' ?>
     <section class="user-management">
         <h1>Quản lý Người dùng</h1>
-        <a class="btn-add" href="add_user.php">Thêm người dùng mới</a>
+
+        <!-- Hiển thị thông báo -->
+        <?php if ($message): ?>
+            <div class="message" style="margin-bottom: 15px; font-weight: bold; color: green;">
+                <?= htmlspecialchars($message) ?>
+            </div>
+        <?php endif; ?>
+
         <table>
             <thead>
                 <tr>
@@ -44,9 +63,10 @@ $users = getUsersByType('user');
                             <td><?= htmlspecialchars($user['email']) ?></td>
                             <td><?= htmlspecialchars($user['user_type']) ?></td>
                             <td class="actions">
-                                <a href="view_user.php?id=<?= urlencode($user['id']) ?>">Xem</a>
-                                <a href="edit_user.php?id=<?= urlencode($user['id']) ?>">Sửa</a>
-                                <a href="delete_user.php?id=<?= urlencode($user['id']) ?>" onclick="return confirm('Bạn có chắc muốn xóa người dùng này?');">Xóa</a>
+                                <a href="?delete_id=<?= urlencode($user['id']) ?>"
+                                    onclick="return confirm('Bạn có chắc muốn xóa người dùng này?');">
+                                    Xóa
+                                </a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -59,7 +79,7 @@ $users = getUsersByType('user');
         </table>
     </section>
 
-    <?php include 'ad_footer.php' ?>
+    <?php include 'ad_footer.php'; ?>
 </body>
 
 </html>

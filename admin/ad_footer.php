@@ -1,4 +1,6 @@
 
+<!-- trang footer -->
+
 <footer class="admin-footer">
   <div class="footer-top">
     <div class="footer-column">

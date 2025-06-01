@@ -1,3 +1,5 @@
+<!-- trang tin nhắn của khách hàng -->
+
 <?php
 require_once __DIR__ . '/../service/contacts_service.php';
 

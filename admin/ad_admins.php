@@ -1,5 +1,20 @@
+<!-- trang quản trị viên -->
+
 <?php
 require_once __DIR__ . '/../service/users_service.php';
+
+// Lấy danh sách admin (user_type = 'admin')
+$admins = getUsersByType('admin');
+
+// Xử lý xóa nếu có `id` trên URL
+if (isset($_GET['delete_id'])) {
+    $id = intval($_GET['delete_id']);
+    if (deleteUserById($id)) {
+        $successMessage = "Đã xóa quản trị viên thành công.";
+    } else {
+        $errorMessage = "Không thể xóa quản trị viên.";
+    }
+}
 
 // Lấy danh sách admin (user_type = 'admin')
 $admins = getUsersByType('admin');
@@ -23,8 +38,18 @@ $admins = getUsersByType('admin');
 
     <section class="admin-management">
         <h1>Quản lý Quản trị viên</h1>
-        <a class="btn-add" href="add_admin.php">Thêm quản trị viên mới</a>
+        <a class="btn-add" href="ad_add_admins.php">Thêm quản trị viên mới</a>
+        <?php if (isset($successMessage)): ?>
+            <div style="color: green; font-weight: bold; margin-bottom: 10px;">
+                <?= $successMessage ?>
+            </div>
+        <?php endif; ?>
 
+        <?php if (isset($errorMessage)): ?>
+            <div style="color: red; font-weight: bold; margin-bottom: 10px;">
+                <?= $errorMessage ?>
+            </div>
+        <?php endif; ?>
         <table>
             <thead>
                 <tr>
@@ -44,9 +69,9 @@ $admins = getUsersByType('admin');
                             <td><?= htmlspecialchars($admin['email']) ?></td>
                             <td><?= htmlspecialchars($admin['user_type']) ?></td>
                             <td class="actions">
-                                <a href="view_admin.php?id=<?= urlencode($admin['id']) ?>">Xem</a>
-                                <a href="edit_admin.php?id=<?= urlencode($admin['id']) ?>">Sửa</a>
-                                <a href="delete_admin.php?id=<?= urlencode($admin['id']) ?>" onclick="return confirm('Bạn có chắc muốn xóa quản trị viên này?');">Xóa</a>
+                                <a href="ad_edit_admins.php?id=<?= urlencode($admin['id']) ?>">Sửa</a>
+
+                                <a href="ad_admins.php?delete_id=<?= urlencode($admin['id']) ?>" onclick="return confirm('Bạn có chắc muốn xóa quản trị viên này?');">Xóa</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

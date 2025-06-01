@@ -1,0 +1,67 @@
+.edit_form {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 150px 30px 30px 30px;
+    background-color: #fff0f6; /* Hồng nhạt */
+    border: 1px solid #f8bbd0;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.edit_form h2 {
+    text-align: center;
+    color: #d81b60;
+    margin-bottom: 25px;
+    font-size: 25px;
+}
+
+.edit_form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit_form label {
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #c2185b;
+}
+
+.edit_form input[type="text"],
+.edit_form input[type="email"] {
+    padding: 10px;
+    border: 1px solid #f3c1cf;
+    border-radius: 6px;
+    background-color: #fffafc;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.edit_form input:focus {
+    border-color: #f06292;
+    outline: none;
+    box-shadow: 0 0 5px rgba(240, 98, 146, 0.3);
+}
+
+.edit_form button {
+    padding: 12px;
+    background-color: #ec407a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit_form button:hover {
+    background-color: #d81b60;
+}
+
+.edit_form p {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    margin-top: 15px;
+}

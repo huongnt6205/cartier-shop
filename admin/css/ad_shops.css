@@ -1,0 +1,125 @@
+section {
+    padding-top: 150px;
+}
+
+h1 {
+    color: #ad1d65;
+    font-size: 35px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.menu_products {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 50px 30px;
+    background-color: #fff0f6;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Giao diện sản phẩm chung */
+.pro-container {
+    background-color: #fff;
+    border: 2px solid #f9c1db;
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.pro-container:hover {
+    box-shadow: 0 6px 18px rgba(214, 51, 132, 0.3);
+}
+
+.pro-container img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.pro-container h3 {
+    font-size: 13px;
+    color: #c4518a;
+    margin: 10px 0;
+    text-align: left;
+}
+
+.pro-container .price {
+    color: #d63384;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.actions {
+    margin-top: 12px;
+}
+
+.actions a {
+    display: inline-block;
+    margin: 5px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.actions .edit {
+    background-color: #d63384;
+}
+
+.actions .edit:hover {
+    background-color: #ad1d65;
+}
+
+.actions .delete {
+    background-color: #e55381;
+}
+
+.actions .delete:hover {
+    background-color: #c03964;
+}
+
+/* Ô thêm sản phẩm mới */
+.create-products {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff0f6;
+    border: 2px dashed #f9c1db;
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.2s ease;
+    height: 100%;
+}
+
+.create-products:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(214, 51, 132, 0.3);
+}
+
+.create-products a {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #d63384;
+    padding: 40px;
+    border: 2px solid #d63384;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.create-products a:hover {
+    background-color: #d63384;
+    color: white;
+}

@@ -22,6 +22,7 @@ function saveContact($data)
 
 function getAllMessages()
 {
+    
     $conn = connectDatabase();
     $sql = "SELECT * FROM message ORDER BY id DESC";
     try {
@@ -34,6 +35,23 @@ function getAllMessages()
         $conn = null;
     }
 }
+function getMessageById($id)
+{
+    $conn = connectDatabase();
+    $sql = "SELECT * FROM message WHERE id = :id";
+    try {
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("Lỗi lấy tin nhắn theo ID: " . $e->getMessage());
+        return false;
+    } finally {
+        $conn = null;
+    }
+}
+
 
 function deleteMessageById($id)
 {

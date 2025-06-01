@@ -1,3 +1,4 @@
+<!-- trang header -->
 <?php
 session_start();
 
@@ -16,10 +17,9 @@ if (!isset($_SESSION['admin_name'])) {
                   <img style="width: 100px;" src="/cartier-shop/images/logo-beauty.jpg" alt="Admin Logo" />
                </a>
             </li>
-            <li><a href="/cartier-shop/admin/add_product.php">Thêm sản phẩm</a></li>
-            <li><a href="/cartier-shop/admin/add_product_detail.php">Thêm chi tiết sản phẩm</a></li>
-            <li><a href="/cartier-shop/admin/update_product.php">Cập nhật sản phẩm</a></li>
-            <li><a href="/cartier-shop/admin/ad_contacts.php">Liên hệ</a></li>
+            <li><a href="/cartier-shop/admin/ad_admins.php">  Quản lí admin</a> </li>
+            <li><a href="/cartier-shop/admin/ad_shops.php"> Quản lí sản phẩm </a></li>
+            <li><a href="/cartier-shop/admin/ad_contacts.php"> Quản lí liên hệ </a></li>
          </ul>
       </div>
 

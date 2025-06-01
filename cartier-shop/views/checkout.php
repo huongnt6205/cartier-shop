@@ -1,1 +1,0 @@
-   <!-- trang thanh toán  -->

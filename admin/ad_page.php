@@ -1,7 +1,9 @@
+<!-- trang chính -->
+
 <?php
 require_once __DIR__ . "/../service/order_service.php";
 require_once __DIR__ . '/../service/users_service.php';
-
+require_once __DIR__ . '/../service/message_service.php';
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +12,7 @@ require_once __DIR__ . '/../service/users_service.php';
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Quản lý đơn hàng</title>
+   <title>Quản trị admin</title>
    <link rel="stylesheet" href="../admin/css/ad_app.css" />
    <link rel="stylesheet" href="../admin/css/ad_page.css">
    <link rel="stylesheet" href="../admin/css/ad_footer.css" />
@@ -47,6 +49,13 @@ require_once __DIR__ . '/../service/users_service.php';
             <p><a href="ad_orders.php">Xem chi tiết</a></p>
          </div>
 
+         <!-- Quản lí sản phẩm -->
+         <div class="box">
+            <?php $userCount = getProductCount(); ?>
+            <h1>Quản lí Sản phẩm của Cartier Beauty </h1>
+            <h3><?= htmlspecialchars($userCount) ?> <span> sản phẩm </span></h3>
+            <p><a href="ad_shops.php">Xem chi tiết</a></p>
+         </div>
          <!-- Người dùng -->
          <div class="box">
             <?php $userCount = getUserCount('user'); ?>
@@ -65,9 +74,14 @@ require_once __DIR__ . '/../service/users_service.php';
 
          <!-- Tin nhắn -->
          <div class="box">
-            <h3><?= $messageCount ?> <span>tin nhắn</span></h3>
-            <p><a href="ad_contact.php">Xem chi tiết</a></p>
+            <?php
+            $messageCount = getMessageCount();
+            ?>
+            <h1>Quản lí liên hệ người dùng</h1>
+            <h3><?= htmlspecialchars($messageCount) ?> <span>tin nhắn</span></h3>
+            <p><a href="ad_contacts.php">Xem chi tiết</a></p>
          </div>
+
       </div>
    </section>
 
