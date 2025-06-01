@@ -60,6 +60,7 @@ require_once __DIR__ . '/../service/message_service.php';
          <div class="box">
             <?php $userCount = getUserCount('user'); ?>
             <h1>Quản lí tài khoản đã đăng ký Website Cartier Beauty </h1>
+            <p>Đây là trang bảo mật và không thể chỉnh sửa</p>
             <h3><?= htmlspecialchars($userCount) ?> <span>người dùng</span></h3>
             <p><a href="ad_users.php">Xem chi tiết</a></p>
          </div>

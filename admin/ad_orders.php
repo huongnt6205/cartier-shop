@@ -68,7 +68,7 @@ $orders = getAllOrder();
                                 ?>
                             </td>
                             <td data-label="Thao tác">
-                                <a href="ad_order_detail.php?order_id=<?= urlencode($order['order_id']) ?>" class="btn-detail">Xem chi tiết</a>
+                                <a href="ad_order_details.php?order_id=<?= urlencode($order['order_id']) ?>" class="btn-detail">Xem chi tiết</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

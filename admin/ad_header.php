@@ -26,7 +26,7 @@ if (!isset($_SESSION['admin_name'])) {
       <div class="nav-right">
          <?php if (!empty($_SESSION['admin_name'])): ?>
             <span>Xin chào, <strong><?= htmlspecialchars($_SESSION['admin_name']) ?></strong></span>
-            <a href="/cartier-shop/views/logout.php" style="margin-left: 15px; padding: 8px 12px; background-color: #f44336; color: white; border-radius: 3px; text-decoration: none;">ĐĂNG XUẤT</a>
+            <a href="/cartier-shop/views/logout.php" style="margin-left: 15px; padding: 8px 12px; background-color: #d63384; color: white; border-radius: 3px; text-decoration: none;">ĐĂNG XUẤT</a>
          <?php else: ?>
             <a href="/cartier-shop/views/login.php">
                <button style="padding: 8px 12px; background-color: #f44336; color: white; border: none; border-radius: 3px;">ĐĂNG NHẬP</button>
