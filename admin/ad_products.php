@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $productId = addProduct($name, $price, $old_price, $description, $category_id);
 
         if ($productId) {
-            addProductImage($productId, '/cartier-shop/upload/' . $mainImageName, true);
+            addProductImage($productId, '../upload/' . $mainImageName, true);
             if (isset($_FILES['other_images'])) {
                 $otherImages = $_FILES['other_images'];
                 for ($i = 0; $i < count($otherImages['name']); $i++) {
@@ -50,9 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $tmpName = $otherImages['tmp_name'][$i];
                         $fileName = time() . '_' . uniqid() . '_other_' . basename($otherImages['name'][$i]);
                         $filePath = $uploadDir . $fileName;
-
                         if (move_uploaded_file($tmpName, $filePath)) {
-                            addProductImage($productId, '/cartier-shop/upload/' . $fileName, false);
+                            addProductImage($productId, '../upload/' . $fileName, false);
                         }
                     }
                 }
@@ -101,7 +100,12 @@ $categories = getAllCategory();
         <?php endif; ?>
 
         <?php if (isset($_GET['success'])): ?>
-            <p style="color: green;">Thêm sản phẩm thànhs công!</p>
+            <?php if ($success || isset($_GET['success'])): ?>
+                <script>
+                    alert("Thêm sản phẩm thành công!");
+                    window.location.href = "ad_shops.php";
+                </script>
+            <?php endif; ?>
         <?php endif; ?>
 
         <form action="ad_products.php" method="post" enctype="multipart/form-data">

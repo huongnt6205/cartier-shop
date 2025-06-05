@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = trim($_POST['description']);
     $category_id = (int)$_POST['category_id'];
 
-    $updated = updateProduct($id, $name, $price, $description, $category_id);
+    $updated = updateProduct($id, $name, $price, $old_price, $description, $category_id);
 
     if ($updated) {
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {

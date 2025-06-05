@@ -45,9 +45,9 @@ function uploadImage($file, $uploadDir = __DIR__ . '/../upload/')
     $uniqueName = time() . '_' . uniqid() . '_' . $originalName;
     $destination = $uploadDir . $uniqueName;
 
-    // Di chuyển file tạm sang thư mục upload
+    // Di chuyển file tạm sang thư mục upload 
     if (move_uploaded_file($file['tmp_name'], $destination)) {
-        return '/cartier-shop/upload/' . $uniqueName;
+        return '/cartier-shop/upload/' . $uniqueName . '.jpg';
     }
 
     return false;
