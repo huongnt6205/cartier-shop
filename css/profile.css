@@ -1,0 +1,110 @@
+.profile-section {
+    background-color: #ffe6f0;
+    padding: 50px 20px;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-section .profile-container {
+    max-width: 700px;
+    width: 100%;
+    background: #fff;
+    border-radius: 15px;
+    padding: 35px 40px;
+    box-shadow: 0 6px 20px rgba(214, 51, 132, 0.15);
+    text-align: center;
+}
+
+.profile-section .profile-header {
+    margin-bottom: 30px;
+}
+
+.profile-section .profile-header .avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #d63384;
+    margin-bottom: 15px;
+}
+
+.profile-section .profile-header h2 {
+    font-size: 28px;
+    color: #d63384;
+    margin: 8px 0 6px;
+    font-weight: 700;
+}
+
+.profile-section .profile-header p {
+    font-size: 16px;
+    color: #555;
+}
+
+.profile-section .profile-info p {
+    font-size: 17px;
+    color: #444;
+    margin: 14px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.profile-section i {
+    color: #d63384;
+    font-size: 20px;
+}
+
+.profile-section .btn-group {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.profile-section .btn-group a {
+    background-color: #d63384;
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(214, 51, 132, 0.4);
+    transition: background-color 0.3s ease;
+}
+
+.profile-section .btn-group a:hover {
+    background-color: #a1205e;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .profile-section .profile-container {
+        padding: 25px 20px;
+    }
+
+    .profile-section .profile-header h2 {
+        font-size: 24px;
+    }
+
+    .profile-section .profile-header .avatar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-section .btn-group {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .profile-section .btn-group a {
+        width: 100%;
+        justify-content: center;
+    }
+}

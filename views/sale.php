@@ -1,87 +1,77 @@
+<?php
+require_once __DIR__ . "/../service/product_service.php";
+require_once __DIR__ . "/../service/product_image_service.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cartier Beauty.vn</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cartier Beauty.vn - Sale</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link rel="stylesheet" href="/cartier-shop/css/app.css">
-    <link rel="stylesheet" href="/cartier-shop/css/sale.css">
-    <link rel="stylesheet" href="/cartier-shop/css/header.css">
-    <link rel="stylesheet" href="/cartier-shop/css/footer.css">
+    <link rel="stylesheet" href="/cartier-shop/css/app.css" />
+    <link rel="stylesheet" href="/cartier-shop/css/sale.css" />
+    <link rel="stylesheet" href="/cartier-shop/css/header.css" />
+    <link rel="stylesheet" href="/cartier-shop/css/footer.css" />
+    <style>
+        .old-price {
+            text-decoration: line-through;
+            color: gray;
+            margin-right: 10px;
+        }
+    </style>
 </head>
 
 <body>
     <?php include 'header.php'; ?>
 
-    <section class="page-header"></section>
+    <section class="page-header">
+        <h1>Sản phẩm đang giảm giá</h1>
+    </section>
 
     <section class="product">
-        <?php echo '<div class="sale-banner"> #SALE UP TO 50%</div>'; ?>
+        <?php foreach ($categories as $category):
+            echo '<h2 id="' . htmlspecialchars($category['id']) . '" class="category-title">' . htmlspecialchars($category['name']) . '</h2>';
+        ?>
 
-        <div class="pro-container">
-            <?php
-            // All products
-            $products = [
-                // Cushion
-                ["img" => "cushion/dr3.jpg", "price" => 220, "old_price" => 600, "name" => "Cushion DIOR", "category" => "Cushion"],
-                ["img" => "cushion/po2.jpg", "price" => 400, "old_price" => 800, "name" => "Cushion SKKN", "category" => "Cushion"],
-                ["img" => "cushion/lg1.jpg", "price" => 600, "old_price" => 1000, "name" => "Cushion Laneige", "category" => "Cushion"],
-                ["img" => "cushion/ap1.jpg", "price" => 350, "old_price" => 500, "name" => "Cushion AP", "category" => "Cushion"],
-
-                // Eyeshadow
-                ["img" => "eyeshadow/ce1.jpg", "price" => 840, "old_price" => 1500, "name" => "3CE", "category" => "Phấn mắt"],
-                ["img" => "eyeshadow/mt1.jpg", "price" => 450, "old_price" => 600, "name" => "Merythod", "category" => "Phấn mắt"],
-                ["img" => "eyeshadow/pr1.jpg", "price" => 220, "old_price" => 450, "name" => "Peripera", "category" => "Phấn mắt"],
-                ["img" => "eyeshadow/jd1.jpg", "price" => 600, "old_price" => 900, "name" => "Jully Doll", "category" => "Phấn mắt"],
-
-                // Blusher
-                ["img" => "blusher/ce1.jpg", "price" => 220, "old_price" => 700, "name" => "3CE Blusher", "category" => "Má hồng"],
-                ["img" => "blusher/dr1.jpg", "price" => 400, "old_price" => 600, "name" => "DIOR Blusher", "category" => "Má hồng"],
-                ["img" => "blusher/ys2.jpg", "price" => 600, "old_price" => 1200, "name" => "YSL Blusher", "category" => "Má hồng"],
-                ["img" => "blusher/red1.jpg", "price" => 350, "old_price" => 550, "name" => "Red Chamber Blusher", "category" => "Má hồng"],
-
-                // Lipsticks
-                ["img" => "lips/bbia1.jpg", "price" => 199, "old_price" => 600, "name" => "Bbia Last Lipstick", "category" => "Son môi"],
-                ["img" => "lips/dr1.jpg", "price" => 450, "old_price" => 900, "name" => "DIOR Lipstick", "category" => "Son môi"],
-                ["img" => "lips/fk1.jpg", "price" => 220, "old_price" => 400, "name" => "Flower Knows Lipstick", "category" => "Son môi"],
-                ["img" => "lips/mc1.jpg", "price" => 600, "old_price" => 800, "name" => "MAC Lipstick", "category" => "Son môi"],
-            ];
-
-            // Group products by category
-            $grouped = [];
-            foreach ($products as $product) {
-                $grouped[$product["category"]][] = $product;
-            }
-
-            // Render grouped products
-            foreach ($grouped as $category => $items) {
-                echo '<div class="category-section">';
-                echo '<h2 class="category-title">' . strtoupper($category) . '</h2>';
-                echo '<div class="pro-container">';
-
-                foreach ($items as $product) {
-                    echo '<div class="pro" onclick="window.location.href=\'sproduct.php\'">';
-                    echo '<img src="../images/products/' . $product["img"] . '" alt="">';
-                    echo '<div class="des">';
-                    echo '<span>New</span>';
-                    echo '<h5>' . $product["name"] . '</h5>';
-                    echo '<div class="star">';
-                    for ($i = 0; $i < 5; $i++) {
-                        echo '<i class="fa-solid fa-star"></i>';
-                    }
-                    echo '</div>';
-                    echo '<h4><span class="old-price">$' . $product["old_price"] . '</span> $' . $product["price"] . '</h4>';
-                    echo '</div>';
-                    echo '<a href="#"><i class="fa-solid fa-cart-shopping"></i></a>';
-                    echo '</div>';
+            <div class="pro-container">
+                <?php
+                $saleProducts = getSaleProductsByCategory($category['id']);
+                if (count($saleProducts) === 0) {
+                    echo '<p>Không có sản phẩm giảm giá nào trong danh mục này.</p>';
+                } else {
+                    foreach ($saleProducts as $product):
+                        $image = getProductPrimaryImageByProductId($product['id']);
+                ?>
+                        <div class="pro" onclick="window.location.href='sproduct.php?product_id=<?= htmlspecialchars($product['id']) ?>'">
+                            <?php if ($image): ?>
+                                <img src="<?= htmlspecialchars($image['image_url']) ?>" alt="<?= htmlspecialchars($product['name']) ?>" />
+                            <?php else: ?>
+                                <img src="/cartier-shop/images/default-product.jpg" alt="No Image" />
+                            <?php endif; ?>
+                            <div class="des">
+                                <h5><?= htmlspecialchars($product['name']) ?></h5>
+                                <div class="star">
+                                    <?php for ($i = 0; $i < 5; $i++): ?>
+                                        <i class="fa-solid fa-star"></i>
+                                    <?php endfor; ?>
+                                </div>
+                                <h4>
+                                    <?php if (!empty($product['old_price']) && $product['old_price'] > 0): ?>
+                                        <span class="old-price"><?= number_format($product['old_price']) ?> VND <br></span>
+                                    <?php endif; ?>
+                                    <span style="color: red;"><?= number_format($product['price']) ?> VND</span>
+                                </h4>
+                            </div>
+                            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                        </div>
+                <?php
+                    endforeach;
                 }
-
-                echo '</div></div>';
-            }
-            ?>
-        </div>
+                ?>
+            </div>
+        <?php endforeach; ?>
     </section>
 
     <section class="pagination">
@@ -98,7 +88,9 @@
             </div>
             <div class="form">
                 <input type="text" placeholder="Địa chỉ email của bạn" />
-                <button>Đăng ký</button>
+                <a href="signup.php">
+                    <button>Đăng ký</button>
+                </a>
             </div>
         </div>
     </section>

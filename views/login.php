@@ -90,6 +90,10 @@ if (isset($_POST['submit'])) {
                     <button class="btn-login" type="submit" name="submit">
                         Đăng nhập <i class="fa-solid fa-arrow-right"></i>
                     </button>
+
+                    <div class="reset-page">
+                        <a href="/cartier-shop/index.php"> ← Quay về trang chủ </a>
+                    </div>
                 </form>
             </div>
         </div>

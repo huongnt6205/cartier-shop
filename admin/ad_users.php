@@ -63,6 +63,7 @@ $users = getUsersByType('user');
                             <td><?= htmlspecialchars($user['email']) ?></td>
                             <td><?= htmlspecialchars($user['user_type']) ?></td>
                             <td class="actions">
+                                <a href="ad_edit_users.php?id=<?= urlencode($user['id']) ?>">Sửa</a>
                                 <a href="?delete_id=<?= urlencode($user['id']) ?>"
                                     onclick="return confirm('Bạn có chắc muốn xóa người dùng này?');">
                                     Xóa

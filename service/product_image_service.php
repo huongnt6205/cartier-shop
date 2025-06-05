@@ -30,3 +30,25 @@ function addProductImage($productId, $imagePath, $isPrimary = false)
         ':is_primary' => $isPrimary ? 1 : 0,
     ]);
 }
+
+function uploadImage($file, $uploadDir = __DIR__ . '/../upload/')
+{
+    if (!isset($file) || $file['error'] !== UPLOAD_ERR_OK) {
+        return false;
+    }
+
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0755, true);
+    }
+
+    $originalName = basename($file['name']);
+    $uniqueName = time() . '_' . uniqid() . '_' . $originalName;
+    $destination = $uploadDir . $uniqueName;
+
+    // Di chuyển file tạm sang thư mục upload
+    if (move_uploaded_file($file['tmp_name'], $destination)) {
+        return '/cartier-shop/upload/' . $uniqueName;
+    }
+
+    return false;
+}

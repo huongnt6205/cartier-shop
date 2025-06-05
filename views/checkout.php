@@ -72,7 +72,7 @@ if (!empty($_SESSION['cart'])) {
                     <div class="summary-details">
                         <p><span>Tạm tính:</span> <?php echo number_format($total, 2); ?> VND </p>
                         <p><span>Phí vận chuyển: </span> Miễn phí vận chuyển </p>
-                        <p class="final-total"><span>Tổng cộng:</span> $<?php echo number_format($total, 2); ?> VND </p>
+                        <p class="final-total"><span>Tổng cộng:</span> <?php echo number_format($total, 2); ?> VND </p>
                     </div>
                 <?php endif; ?>
                 <p></p>

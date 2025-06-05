@@ -5,8 +5,9 @@
 
 body {
   margin: 0;
-  padding-top: 80px; 
+  padding-top: 80px;
 }
+
 /* === HEADER NAV FIXED === */
 .header-nav {
   position: fixed;
@@ -19,7 +20,7 @@ body {
   padding: 14px 40px;
   background-color: #fff;
   border-bottom: 2px solid #fce4ec;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);  
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
   z-index: 999;
 }
 
@@ -84,27 +85,22 @@ body {
   opacity: 0;
   transform: translateY(10px);
   transition: all 0.3s ease;
-  margin-top: 8px;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
   opacity: 1;
-  transform: translateY(0px);
+  transform: translateY(0);
 }
 
-.dropdown-content li {
-  padding: 0;
-}
-
-.dropdown-content a {
+.dropdown-content li a {
   display: block;
   padding: 10px 20px;
   color: #444;
   transition: background 0.3s;
 }
 
-.dropdown-content a:hover {
+.dropdown-content li a:hover {
   background-color: #ffe6f0;
   color: #d63384;
 }
@@ -123,15 +119,15 @@ body {
 
 .search-form {
   display: flex;
-  align-items: center; 
-  border: 1px solid #eee;
+  align-items: center;
+  border: 1px solid #d63384;
   border-radius: 20px;
   overflow: hidden;
   transition: box-shadow 0.3s;
-  height: 36px; 
+  height: 36px;
 }
 
-.search-form input {
+.search-form .input-text {
   border: none;
   outline: none;
   padding: 6px 12px;
@@ -142,7 +138,7 @@ body {
   border: none;
   background-color: #fff;
   color: #888;
-  padding: 6px 10px;
+  padding: 7px 10px;
   cursor: pointer;
 }
 
@@ -154,7 +150,7 @@ body {
   background-color: #d63384;
   color: white;
   border: none;
-  padding: 8px 16px;
+  padding: 10px 16px;
   border-radius: 20px;
   cursor: pointer;
   font-weight: 500;
@@ -165,7 +161,120 @@ body {
   background-color: #ad1d65;
 }
 
-.span-icon-cart a {
+/* === ICONS: User & Cart === */
+.nav-right i.fa-user,
+.nav-right i.fa-cart-shopping {
   color: #d63384;
-  font-size: 18px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* === CART SPAN === */
+.span-icon-cart {
+  position: relative;
+}
+
+#cart-item-number {
+  position: absolute;
+  top: -10px;
+  right: -15px;
+  color: #ad1d65;
+  font-size: 13px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid #888;
+}
+
+/* === USER DROPDOWN === */
+/* Container user dropdown */
+.user-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* User icon - pointer chuột, màu sắc */
+.user-icon {
+  color: #d63384;
+  font-size: 20px;
+  cursor: pointer;
+  user-select: none;
+  /* tránh bôi đen khi nhấn */
+  transition: color 0.3s ease;
+}
+
+.user-icon:hover {
+  color: #ad1d65;
+}
+
+/* Menu dropdown user */
+.user-menu {
+  display: none;
+  /* mặc định ẩn */
+  position: absolute;
+  top: 36px;
+  /* cách icon user một khoảng */
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+  width: 200px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+}
+
+/* Khi menu được bật hiển thị */
+.user-menu.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Các mục trong menu */
+.user-menu li {
+  padding: 10px 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.user-menu li:last-child {
+  border-bottom: none;
+}
+
+/* Link trong menu */
+.user-menu li a {
+  color: #555;
+  text-decoration: none;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.user-menu li a:hover {
+  color: #d63384;
+}
+
+/* Dòng chào hỏi không phải link */
+.user-menu li:first-child {
+  font-weight: 600;
+  color: #222;
+  cursor: default;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 12px;
+  user-select: none;
+}
+
+/* Khi hover trên từng mục */
+.user-menu li:hover {
+  background-color: #fce4ec;
+  cursor: pointer;
 }

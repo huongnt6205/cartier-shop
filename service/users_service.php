@@ -71,6 +71,25 @@
             $conn = null;
         }
     }
+    function updateUserWithPassword($id, $name, $email, $hashedPassword)
+    {
+        $conn = connectDatabase();
+        $sql = "UPDATE users SET name = :name, email = :email, password = :password WHERE id = :id";
+        try {
+            $stmt = $conn->prepare($sql);
+            return $stmt->execute([
+                ':name' => $name,
+                ':email' => $email,
+                ':password' => $hashedPassword,
+                ':id' => $id
+            ]);
+        } catch (PDOException $e) {
+            error_log("Error in updateUserWithPassword: " . $e->getMessage());
+            return false;
+        } finally {
+            $conn = null;
+        }
+    }
 
     /**
      * Xóa người dùng theo ID
@@ -90,50 +109,50 @@
         }
     }
 
-/**
- * Lấy người dùng theo email
- * @param string $email
- * @return array|null Mảng dữ liệu user hoặc null nếu không tìm thấy
- */
-function getUserByEmail($email)
-{
-    $conn = connectDatabase();
-    $sql = "SELECT * FROM users WHERE email = :email LIMIT 1";
-    try {
-        $stmt = $conn->prepare($sql);
-        $stmt->bindValue(':email', $email);
-        $stmt->execute();
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $user ?: null;
-    } catch (PDOException $e) {
-        error_log("Error in getUserByEmail: " . $e->getMessage());
-        return null;
-    } finally {
-        $conn = null;
+    /**
+     * Lấy người dùng theo email
+     * @param string $email
+     * @return array|null Mảng dữ liệu user hoặc null nếu không tìm thấy
+     */
+    function getUserByEmail($email)
+    {
+        $conn = connectDatabase();
+        $sql = "SELECT * FROM users WHERE email = :email LIMIT 1";
+        try {
+            $stmt = $conn->prepare($sql);
+            $stmt->bindValue(':email', $email);
+            $stmt->execute();
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $user ?: null;
+        } catch (PDOException $e) {
+            error_log("Error in getUserByEmail: " . $e->getMessage());
+            return null;
+        } finally {
+            $conn = null;
+        }
     }
-}
 
-/**
- * Thêm người dùng mới
- * @param array $user Dữ liệu người dùng ['name' => ..., 'email' => ..., 'password' => ..., 'user_type' => ...]
- * @return bool Trả về true nếu thêm thành công, false nếu thất bại
- */
-function addUser(array $user)
-{
-    $conn = connectDatabase();
-    $sql = "INSERT INTO users (name, email, password, user_type) VALUES (:name, :email, :password, :user_type)";
-    try {
-        $stmt = $conn->prepare($sql);
-        return $stmt->execute([
-            ':name' => $user['name'],
-            ':email' => $user['email'],
-            ':password' => $user['password'],
-            ':user_type' => $user['user_type'],
-        ]);
-    } catch (PDOException $e) {
-        error_log("Error in addUser: " . $e->getMessage());
-        return false;
-    } finally {
-        $conn = null;
+    /**
+     * Thêm người dùng mới
+     * @param array $user Dữ liệu người dùng ['name' => ..., 'email' => ..., 'password' => ..., 'user_type' => ...]
+     * @return bool Trả về true nếu thêm thành công, false nếu thất bại
+     */
+    function addUser(array $user)
+    {
+        $conn = connectDatabase();
+        $sql = "INSERT INTO users (name, email, password, user_type) VALUES (:name, :email, :password, :user_type)";
+        try {
+            $stmt = $conn->prepare($sql);
+            return $stmt->execute([
+                ':name' => $user['name'],
+                ':email' => $user['email'],
+                ':password' => $user['password'],
+                ':user_type' => $user['user_type'],
+            ]);
+        } catch (PDOException $e) {
+            error_log("Error in addUser: " . $e->getMessage());
+            return false;
+        } finally {
+            $conn = null;
+        }
     }
-}

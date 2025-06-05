@@ -1,9 +1,15 @@
 <?php
 require __DIR__ . "/../service/product_service.php";
 require __DIR__ . "/../service/product_image_service.php";
-if (isset($_GET['category_id'])) {
-}
+
+// Danh sách category tạm thời, bạn có thể thay bằng lấy từ DB
+$categories = [
+    ['id' => 1, 'name' => 'Skincare'],
+    ['id' => 2, 'name' => 'Makeup'],
+    // Thêm category khác nếu cần
+];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,10 +18,10 @@ if (isset($_GET['category_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Cartier Beauty.vn</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link rel="stylesheet" href="/cartier-shop/css/app.css">
-    <link rel="stylesheet" href="/cartier-shop/css/shop.css">
-    <link rel="stylesheet" href="/cartier-shop/css/header.css">
-    <link rel="stylesheet" href="/cartier-shop/css/footer.css">
+    <link rel="stylesheet" href="/cartier-shop/css/app.css" />
+    <link rel="stylesheet" href="/cartier-shop/css/shop.css" />
+    <link rel="stylesheet" href="/cartier-shop/css/header.css" />
+    <link rel="stylesheet" href="/cartier-shop/css/footer.css" />
 </head>
 
 <body>
@@ -28,34 +34,37 @@ if (isset($_GET['category_id'])) {
 
             <?php
             foreach ($categories as $category) {
-                echo '<h2 id="' . $category['id'] . '" class="category-title">' . $category['name'] . '</h2>'
-            ?>
+                echo '<h2 id="' . htmlspecialchars($category['id']) . '" class="category-title">' . htmlspecialchars($category['name']) . '</h2>';
 
-                <div class="pro-container">
-                    <?php
-                    $products = getByCategory($category['id']);
+                // Lấy sản phẩm không sale theo category
+                $products = getNonSaleProductsByCategory($category['id']);
+
+                if (empty($products)) {
+                    echo '<p>Chưa có sản phẩm trong danh mục này.</p>';
+                } else {
+                    echo '<div class="pro-container">';
                     foreach ($products as $product) {
                         $image = getProductPrimaryImageByProductId($product['id']);
-                        echo '<div class="pro" onclick="window.location.href=\'sproduct.php?product_id='. $product['id'] .'\'">';
+                        echo '<div class="pro" onclick="window.location.href=\'sproduct.php?product_id=' . htmlspecialchars($product['id']) . '\'">';
                         if ($image) {
-                            echo '<img src="'. $image['image_url'] .'"/>';
+                            echo '<img src="' . htmlspecialchars($image['image_url']) . '" alt="' . htmlspecialchars($product['name']) . '"/>';
+                        } else {
+                            echo '<img src="/cartier-shop/images/default-product.jpg" alt="No image" />';
                         }
                         echo '<div class="des">';
-                        echo '<h5>' . $product['name'] . '</h5>';
+                        echo '<h5>' . htmlspecialchars($product['name']) . '</h5>';
                         echo '<div class="star">';
                         for ($i = 0; $i < 5; $i++) {
                             echo '<i class="fa-solid fa-star"></i>';
                         }
                         echo '</div>';
-                        echo '<h4>' . $product["price"] . ' VND </h4>';
+                        echo '<h4>' . number_format($product["price"]) . ' VND</h4>';
                         echo '</div>';
                         echo '<a href="#"><i class="fa-solid fa-cart-shopping"></i></a>';
                         echo '</div>';
                     }
-                    ?>
-                </div>
-
-            <?php
+                    echo '</div>';
+                }
             }
             ?>
 

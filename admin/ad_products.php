@@ -1,54 +1,48 @@
 <!-- thêm sp -->
 
 <?php
-// ad_products.php
 require_once __DIR__ . '/../service/product_service.php';
 require_once __DIR__ . '/../service/product_image_service.php';
 require_once __DIR__ . '/../service/category_service.php';
 
 $errors = [];
 $success = false;
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Lấy dữ liệu từ form
     $name = trim($_POST['name'] ?? '');
     $price = floatval($_POST['price'] ?? 0);
+
+    $old_price = isset($_POST['old_price']) && $_POST['old_price'] !== '' ? floatval($_POST['old_price']) : 0;
+
+
     $description = trim($_POST['description'] ?? '');
     $category_id = intval($_POST['category_id'] ?? 0);
 
-    // Validate dữ liệu đơn giản
     if ($name === '') $errors[] = "Tên sản phẩm không được để trống";
     if ($price <= 0) $errors[] = "Giá sản phẩm phải lớn hơn 0";
     if ($category_id <= 0) $errors[] = "Bạn phải chọn danh mục";
 
-    // Xử lý upload ảnh chính (main_image)
-   $mainImageName = '';
-if (isset($_FILES['main_image']) && $_FILES['main_image']['error'] === UPLOAD_ERR_OK) {
-    $uploadDir = __DIR__ . '/../upload/';
-    
-    // ✅ Đặt đoạn này NGAY SAU khi định nghĩa $uploadDir
-    if (!is_dir($uploadDir)) {
-        mkdir($uploadDir, 0755, true);
+    $mainImageName = '';
+    if (isset($_FILES['main_image']) && $_FILES['main_image']['error'] === UPLOAD_ERR_OK) {
+        $uploadDir = __DIR__ . '/../upload/';
+
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0755, true);
+        }
+
+        $mainImageTmp = $_FILES['main_image']['tmp_name'];
+        $mainImageName = time() . '_' . uniqid() . '_main_' . basename($_FILES['main_image']['name']);
+        $mainImagePath = $uploadDir . $mainImageName;
+
+        if (!move_uploaded_file($mainImageTmp, $mainImagePath)) {
+            $errors[] = "Lỗi khi upload ảnh chính";
+        }
     }
 
-    $mainImageTmp = $_FILES['main_image']['tmp_name'];
-    $mainImageName = time() . '_' . uniqid() . '_main_' . basename($_FILES['main_image']['name']);
-    $mainImagePath = $uploadDir . $mainImageName;
-
-    if (!move_uploaded_file($mainImageTmp, $mainImagePath)) {
-        $errors[] = "Lỗi khi upload ảnh chính";
-    }
-}
-    // Nếu không có lỗi thì tiến hành thêm sản phẩm
     if (empty($errors)) {
-        // Thêm sản phẩm, trả về id mới
-        $productId = addProduct($name, $price, $description, $category_id);
+        $productId = addProduct($name, $price, $old_price, $description, $category_id);
 
         if ($productId) {
-            // Thêm ảnh chính vào bảng product_image với is_primary = 1
             addProductImage($productId, '/cartier-shop/upload/' . $mainImageName, true);
-
-            // Xử lý upload nhiều ảnh phụ (other_images)
             if (isset($_FILES['other_images'])) {
                 $otherImages = $_FILES['other_images'];
                 for ($i = 0; $i < count($otherImages['name']); $i++) {
@@ -72,6 +66,7 @@ if (isset($_FILES['main_image']) && $_FILES['main_image']['error'] === UPLOAD_ER
         }
     }
 }
+
 
 // Lấy danh sách danh mục để hiển thị trong select
 $categories = getAllCategory();
@@ -106,7 +101,7 @@ $categories = getAllCategory();
         <?php endif; ?>
 
         <?php if (isset($_GET['success'])): ?>
-            <p style="color: green;">Thêm sản phẩm thành công!</p>
+            <p style="color: green;">Thêm sản phẩm thànhs công!</p>
         <?php endif; ?>
 
         <form action="ad_products.php" method="post" enctype="multipart/form-data">
@@ -117,6 +112,10 @@ $categories = getAllCategory();
             <div>
                 <label for="price">Giá:</label>
                 <input type="number" step="0.01" name="price" id="price" value="<?= htmlspecialchars($_POST['price'] ?? '') ?>" required />
+            </div>
+            <div>
+                <label for="old_price">Giá cũ (nếu có):</label>
+                <input type="number" step="0.01" name="old_price" id="old_price" value="<?= htmlspecialchars($_POST['old_price'] ?? '') ?>" />
             </div>
             <div>
                 <label for="description">Mô tả:</label>

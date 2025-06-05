@@ -13,5 +13,6 @@ function connectDatabase()
         return $conn;
     } catch (PDOException $e) {
         error_log("Database Error: " . $e->getMessage());
+        return false;  // Trả về false khi kết nối thất bại
     }
 }

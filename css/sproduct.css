@@ -1,3 +1,4 @@
+/* === RESET & BASE === */
 * {
     margin: 0;
     padding: 0;
@@ -69,7 +70,7 @@ a {
 
 .small-img-col img:hover {
     transform: scale(1.05);
-    border-color: #088178;
+    border-color: #c2185b;
 }
 
 .single-pro-details {
@@ -114,7 +115,7 @@ a {
 
 .single-pro-details button {
     display: inline-block;
-    background-color: #088178;
+    background-color: #c2185b;
     color: #fff;
     padding: 12px 24px;
     border: none;
@@ -126,7 +127,7 @@ a {
 }
 
 .single-pro-details button:hover {
-    background-color: #066b66;
+    background-color: #b0124c;
 }
 
 .single-pro-details span {
@@ -203,7 +204,7 @@ a {
 }
 
 .review-form button {
-    background-color: #088178;
+    background-color: #c2185b;
     color: #fff;
     padding: 12px 25px;
     border: none;
@@ -213,7 +214,7 @@ a {
 }
 
 .review-form button:hover {
-    background-color: #066b66;
+    background-color: #b0124c;
 }
 
 .rating-select label {
@@ -224,80 +225,115 @@ a {
 
 /* === RELATED PRODUCTS === */
 .related-products {
-    margin: 60px auto;
-    padding: 20px;
-    max-width: 1200px;
+    padding: 60px 0;
+    background-color: #fafafa;
 }
 
 .related-products h4 {
-    font-size: 22px;
-    color: #333;
-    margin-bottom: 30px;
+    font-size: 24px;
+    color: #c2185b;
+    margin-bottom: 40px;
     text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
+/* Container */
 .related-product-container {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
     justify-content: center;
+    align-items: stretch;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 16px;
+    box-sizing: border-box;
 }
 
+/* Each product */
 .related-product {
-    width: 220px;
+    flex: 0 1 calc(22% - 30px);
+    max-width: calc(22% - 30px);
     background-color: #fff;
-    border: 1px solid #eee;
-    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
     text-align: center;
-    padding-bottom: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .related-product {
+        flex: 0 1 calc(30% - 30px);
+        max-width: calc(30% - 30px);
+    }
+}
+
+@media (max-width: 768px) {
+    .related-product {
+        flex: 0 1 calc(45% - 30px);
+        max-width: calc(45% - 30px);
+    }
+}
+
+@media (max-width: 480px) {
+    .related-product {
+        flex: 0 1 100%;
+        max-width: 100%;
+    }
 }
 
 .related-product img {
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 12px;
     transition: transform 0.3s ease;
-    border-bottom: 1px solid #eee;
-}
-
-.related-product:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-}
-
-.related-product:hover img {
-    transform: scale(1.05);
 }
 
 .related-product h5 {
-    font-size: 16px;
-    margin: 10px 0 5px;
+    font-size: 17px;
+    font-weight: 500;
+    margin: 10px 0 6px;
     color: #333;
 }
 
 .related-product p {
-    font-size: 14px;
-    color: #088178;
-    margin-bottom: 10px;
+    font-size: 15px;
+    color: #d81b60;
+    margin-bottom: 12px;
+    font-weight: 500;
 }
 
 .related-product button {
-    background-color: #088178;
+    background-color: #d81b60;
     color: #fff;
     border: none;
-    padding: 8px 16px;
+    padding: 8px 18px;
     border-radius: 20px;
     cursor: pointer;
     font-size: 14px;
-    transition: background 0.3s ease;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
 }
 
 .related-product button:hover {
-    background-color: #066b66;
+    background-color: #b0124c;
+}
+
+.related-product:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.related-product:hover img {
+    transform: scale(1.05);
 }
 
 /* === QUANTITY ACTION BUTTONS === */
@@ -318,9 +354,11 @@ a {
     align-items: center;
     margin-bottom: 10px;
 }
+
 .btn-click {
     display: block;
 }
+
 .qty-btn {
     background: #ddd;
     border: none;
@@ -334,4 +372,82 @@ a {
 
 .qty-btn:hover {
     background: #ccc;
+}
+
+/* === MODAL OVERLAY === */
+.modal {
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    /* làm mờ nền */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* === MODAL BOX === */
+.modal-content {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    animation: scaleUp 0.3s ease-out;
+}
+
+/* === MODAL TEXT === */
+.modal-content p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+/* === MODAL BUTTON === */
+.modal-content button {
+    padding: 10px 24px;
+    background-color: #c2185b;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modal-content button:hover {
+    background-color: #b0124c;
+    transform: scale(1.05);
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }

@@ -60,11 +60,10 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
 <body>
     <?php include __DIR__ . '/views/header.php'; ?>
 
+    <!-- slider trượt -->
     <section class="hero">
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-
-                <!-- Slide 1 -->
                 <div class="swiper-slide" style="background-image: url('images/hero-bg.jpg');">
                     <div class="hero-bn">
                         <h4>Trade-in-offer</h4>
@@ -74,45 +73,12 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
                         <button class="bthero">Shop Now</button>
                     </div>
                 </div>
-
-                <!-- Slide 2 -->
                 <div class="swiper-slide" style="background-image: url('images/banner1.jpg');"></div>
-
-                <!-- Slide 3 -->
                 <div class="swiper-slide" style="background-image: url('images/banner3.jpg');"></div>
             </div>
-            <!-- Pagination (dấu chấm trượt) -->
             <div class="swiper-pagination"></div>
         </div>
     </section>
-
-    <script>
-        const swiper = new Swiper(".mySwiper", {
-            loop: true,
-            speed: 1000, // 1s chuyển slide
-            autoplay: {
-                delay: 6000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            grabCursor: true,
-            effect: 'slide',
-        });
-    </script>
-
-    <script>
-        let index = 0;
-        const slider = document.querySelector('.slider');
-        const totalSlides = document.querySelectorAll('.slide').length;
-
-        setInterval(() => {
-            index = (index + 1) % totalSlides;
-            slider.style.transform = `translateX(-${index * 100}%)`;
-        }, 3000);
-    </script>
 
     <section class="product-highlight">
         <div class="highlight-image">
@@ -121,7 +87,7 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
         <div class="highlight-content">
             <p class="category">Makeup Artists</p>
             <h2 class="title">Miss Cartier </h2>
-            <a href="#" class="discover-link">Discover</a>
+            <a href="/cartier-shop/views/shop.php" class="discover-link">Khám phá thêm</a>
         </div>
     </section>
 
@@ -129,7 +95,7 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
         <div class="highlight-content-right">
             <h2 class="title">Cartier </h2>
             <p class="category">Tại Việt Nam, Cartier là thương hiệu chuyên về mỹ phẩm có sức ảnh hưởng lớn được thành lập vào năm 2000. Được biết đến với các thiết kế tinh tế, sang trọng và đẳng cấp Cartier đã trở thành biểu tượng của phong cách và sự xa hoa dành cho giới thượng lưu trên thế giới.</p>
-            <a href="#" class="discover-link-right">Tìm hiểu thêm</a>
+            <a href="/cartier-shop/views/about.php" class="discover-link-right">Tìm hiểu thêm</a>
         </div>
         <div class="highlight-image-right">
             <img src="/cartier-shop/images/A2.jpg" alt="Miss Cartier">
@@ -140,16 +106,16 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
         <div class="banner-item">
             <img src="/cartier-shop/images/A4.jpg" alt="Handbags" />
             <div class="banner-text">
-                <h4>HANDBAGS</h4>
-                <a href="#">EXPLORE</a>
+                <h4> DIOR </h4>
+                <a href="/cartier-shop/views/sale.php"> VIEW MORE</a>
             </div>
         </div>
 
         <div class="banner-item">
             <img src="/cartier-shop/images/A5.jpg" alt="Ready to Wear" />
             <div class="banner-text">
-                <h4>READY TO WEAR</h4>
-                <a href="#">VIEW MORE</a>
+                <h4> YSL </h4>
+                <a href="/cartier-shop/views/sale.php">VIEW MORE</a>
             </div>
         </div>
     </section>
@@ -171,6 +137,32 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
         </div>
     </section>
     <?php include 'views/footer.php'; ?>
+
+    <script>
+        const swiper = new Swiper(".mySwiper", {
+            loop: true,
+            speed: 1000, // 1s chuyển slide
+            autoplay: {
+                delay: 6000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            grabCursor: true,
+            effect: 'slide',
+        });
+        
+        let index = 0;
+        const slider = document.querySelector('.slider');
+        const totalSlides = document.querySelectorAll('.slide').length;
+
+        setInterval(() => {
+            index = (index + 1) % totalSlides;
+            slider.style.transform = `translateX(-${index * 100}%)`;
+        }, 3000);
+    </script>
 </body>
 
 </html>

@@ -116,3 +116,12 @@ button:hover {
         padding: 40px 20px;
     }
 }
+
+.reset-page {
+    padding: 10px;
+    color: #aaa;
+}
+
+.reset-page a{
+    color: #fff;
+}   

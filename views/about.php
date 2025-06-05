@@ -119,7 +119,7 @@
             </div>
         </div>
         <div class="video">
-            <h2>Video về sản phẩm của chúng tôi</h2>
+            <h2>Sản phẩm của chúng tôi</h2>
             <video autoplay muted loop src="../images/about/videopr.mp4"></video>
         </div>
     </section>
@@ -127,7 +127,7 @@
     <!-- cam kết -->
     <section class="camket">
         <div class="commitment">
-            <h2>Cam kết từ CARTIER BEAUTY</h2>
+            <h2>CARTIER BEAUTY</h2>
             <div class="commitment-list">
                 <div class="commit-item">
                     <img src="../images/star.png" alt="Chất lượng cao">

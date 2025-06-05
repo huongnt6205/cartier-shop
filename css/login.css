@@ -176,3 +176,11 @@ html {
         padding: 30px 20px;
     }
 }
+
+.reset-page {
+    padding: 10px;
+}
+
+.reset-page a{
+    color: #fff;
+}
