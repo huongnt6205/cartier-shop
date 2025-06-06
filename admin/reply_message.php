@@ -1,5 +1,5 @@
     <!-- trả lời tin nhắn khách hàng -->
-    
+
     <?php
     require_once __DIR__ . '/../service/contacts_service.php';
 
@@ -42,10 +42,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Trả lời tin nhắn</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-        <link rel="stylesheet" href="/cartier-shop/admin/css/reply_message.css" />
+        <link rel="stylesheet" href="../admin/css/reply_message.css" />
+        <link rel="stylesheet" href="../admin/css/ad_app.css" />
+        <link rel="stylesheet" href="../admin/css/ad_footer.css" />
+        <link rel="stylesheet" href="../admin/css/ad_header.css" />
     </head>
 
     <body>
+
+        <?php include 'ad_header.php' ?>
+
         <section class="section-reply">
             <h1>Trả lời tin nhắn từ: <?= htmlspecialchars($message['name']) ?></h1>
 
@@ -72,7 +78,7 @@
                 </form>
             <?php endif; ?>
         </section>
-
+        <?php include 'ad_footer.php' ?>
         </style>
     </body>
 

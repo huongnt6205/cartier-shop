@@ -18,7 +18,7 @@ $messages = getAllMessages();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý liên hệ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="/cartier-shop/admin/css/ad_contacts.css">
+    <link rel="stylesheet" href="../admin/css/ad_contacts.css">
     <link rel="stylesheet" href="../admin/css/ad_app.css" />
     <link rel="stylesheet" href="../admin/css/ad_footer.css" />
     <link rel="stylesheet" href="../admin/css/ad_header.css" />

@@ -1,9 +1,0 @@
-//xóa ảnh sản phẩms
-function deleteProductImagesByProductId($productId)
-{
-    $conn = connectDatabase();
-    if (!$conn) return false;
-
-    $stmt = $conn->prepare("DELETE FROM product_image WHERE product_id = ?");
-    return $stmt->execute([$productId]);
-}
