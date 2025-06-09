@@ -66,55 +66,63 @@ $image = getProductPrimaryImageByProductId($id);
     <title>Sửa sản phẩm</title>
     <link rel="stylesheet" href="../admin/css/ad_app.css">
     <link rel="stylesheet" href="../admin/css/ad_update_products.css">
+    <link rel="stylesheet" href="../admin/css/ad_header.css">
+    <link rel="stylesheet" href="../admin/css/ad_footer.css">
 </head>
 
 <body>
-    <form class="edit-form" action="" method="post" enctype="multipart/form-data">
-        <h2>Sửa sản phẩm</h2>
+    <?php include 'ad_header.php'?>
 
-        <?php if ($success): ?>
-            <div style="color: green; font-weight: bold; margin-bottom: 10px;">
-                Cập nhật sản phẩm thành công!
-            </div>
-        <?php endif; ?>
+    <section>
+        <form class="edit-form" action="" method="post" enctype="multipart/form-data">
+            <h2>Sửa sản phẩm</h2>
 
-        <?php if ($error): ?>
-            <div style="color: red; font-weight: bold; margin-bottom: 10px;">
-                <?= htmlspecialchars($error) ?>
-            </div>
-        <?php endif; ?>
+            <?php if ($success): ?>
+                <div style="color: green; font-weight: bold; margin-bottom: 10px;">
+                    Cập nhật sản phẩm thành công!
+                </div>
+            <?php endif; ?>
 
-        <input type="hidden" name="id" value="<?= $product['id'] ?>">
+            <?php if ($error): ?>
+                <div style="color: red; font-weight: bold; margin-bottom: 10px;">
+                    <?= htmlspecialchars($error) ?>
+                </div>
+            <?php endif; ?>
 
-        <label for="name">Tên sản phẩm</label>
-        <input type="text" id="name" name="name" value="<?= htmlspecialchars($product['name']) ?>" required>
+            <input type="hidden" name="id" value="<?= $product['id'] ?>">
 
-        <label for="price">Giá (VND)</label>
-        <input type="number" id="price" name="price" value="<?= $product['price'] ?>" required>
+            <label for="name">Tên sản phẩm</label>
+            <input type="text" id="name" name="name" value="<?= htmlspecialchars($product['name']) ?>" required>
 
-        <label for="description">Mô tả</label>
-        <textarea id="description" name="description" rows="4"><?= htmlspecialchars($product['description']) ?></textarea>
+            <label for="price">Giá (VND)</label>
+            <input type="number" id="price" name="price" value="<?= $product['price'] ?>" required>
 
-        <label for="category">Danh mục</label>
-        <select id="category" name="category_id" required>
-            <?php foreach ($categories as $cat): ?>
-                <option value="<?= $cat['id'] ?>" <?= $cat['id'] == $product['category_id'] ? 'selected' : '' ?>>
-                    <?= htmlspecialchars($cat['name']) ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
+            <label for="description">Mô tả</label>
+            <textarea id="description" name="description" rows="4"><?= htmlspecialchars($product['description']) ?></textarea>
 
-        <label>Ảnh hiện tại</label><br>
-        <?php if ($image): ?>
-            <img src="../public/<?= htmlspecialchars($image['image_url']) ?>" alt="Ảnh hiện tại" style="max-width: 150px; max-height: 150px;">
-        <?php else: ?>
-            <p>Chưa có ảnh</p>
-        <?php endif; ?>
+            <label for="category">Danh mục</label>
+            <select id="category" name="category_id" required>
+                <?php foreach ($categories as $cat): ?>
+                    <option value="<?= $cat['id'] ?>" <?= $cat['id'] == $product['category_id'] ? 'selected' : '' ?>>
+                        <?= htmlspecialchars($cat['name']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
 
-        <label for="image">Thay ảnh mới (lưu vào thư mục images/)</label>
-        <input type="file" name="image" id="image" accept="image/*">
+            <label>Ảnh hiện tại</label><br>
+            <?php if ($image): ?>
+                <img src="../public/<?= htmlspecialchars($image['image_url']) ?>" alt="Ảnh hiện tại" style="max-width: 150px; max-height: 150px;">
+            <?php else: ?>
+                <p>Chưa có ảnh</p>
+            <?php endif; ?>
 
-        <button type="submit">Cập nhật sản phẩm</button>
-    </form>
+            <label for="image">Thay ảnh mới (lưu vào thư mục images/)</label>
+            <input type="file" name="image" id="image" accept="image/*">
+
+            <button type="submit">Cập nhật sản phẩm</button>
+        </form>
+    </section>
+
+    <?php include 'ad_footer.php' ?>
 </body>
 </html>
